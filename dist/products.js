@@ -1,4 +1,4 @@
-// Sample catalogue. Replace records and image paths with verified supplier data before launch.
+// Sample catalogue. Images are AI-generated illustrations, not actual-stock photographs.
 const products = [
   {
     "id": "paper-a4",
@@ -13,7 +13,8 @@ const products = [
       "Sheets per ream": "500"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/paper-a4-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "paper-a3",
@@ -28,7 +29,8 @@ const products = [
       "Sheets per ream": "500"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/paper-a3-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "exam-pad",
@@ -42,7 +44,8 @@ const products = [
       "Ruling": "Ruled"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/exam-pad-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "pens-blue",
@@ -56,7 +59,8 @@ const products = [
       "Pens per pack": "10"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/pens-blue-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "pens-black",
@@ -70,7 +74,8 @@ const products = [
       "Pens per pack": "10"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/pens-black-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "pencils-hb",
@@ -83,7 +88,8 @@ const products = [
       "Pencils per pack": "12"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/pencils-hb-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "highlighters",
@@ -97,7 +103,8 @@ const products = [
       "Markers per set": "4"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/highlighters-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "file-lever",
@@ -111,7 +118,8 @@ const products = [
       "Type": "Lever arch"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/file-lever-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "file-pocket",
@@ -125,7 +133,8 @@ const products = [
       "Type": "Display file"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/file-pocket-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "folders",
@@ -139,7 +148,8 @@ const products = [
       "Folders per pack": "10"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/folders-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "exercise-72",
@@ -153,7 +163,8 @@ const products = [
       "Ruling": "Feint and margin"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/exercise-72-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "exercise-192",
@@ -168,7 +179,8 @@ const products = [
       "Ruling": "Ruled"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/exercise-192-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "spiral-a5",
@@ -183,7 +195,8 @@ const products = [
       "Ruling": "Ruled"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/spiral-a5-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "coloured-pencils",
@@ -196,7 +209,8 @@ const products = [
       "Type": "Colouring pencils"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/coloured-pencils-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "wax-crayons",
@@ -209,7 +223,8 @@ const products = [
       "Type": "Wax crayons"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/wax-crayons-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "glue-stick",
@@ -222,7 +237,8 @@ const products = [
       "Type": "Glue stick"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/glue-stick-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "ruler-30",
@@ -235,7 +251,8 @@ const products = [
       "Material": "Clear plastic"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/ruler-30-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "geometry-set",
@@ -248,7 +265,8 @@ const products = [
       "Type": "Geometry set"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/geometry-set-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "calculator-basic",
@@ -261,7 +279,8 @@ const products = [
       "Type": "Desktop calculator"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/calculator-basic-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "calculator-scientific",
@@ -275,7 +294,8 @@ const products = [
       "Alternatives": "Subject to buyer approval"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/calculator-scientific-v1.webp",
+    "imageType": "generated illustrative image"
   },
   {
     "id": "learner-pack",
@@ -289,6 +309,7 @@ const products = [
       "Quantity basis": "One pack per learner"
     },
     "brand": "To be confirmed",
-    "image": ""
+    "image": "images/learner-pack-v1.webp",
+    "imageType": "generated illustrative image"
   }
 ];
