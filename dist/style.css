@@ -51,3 +51,8 @@ main{background:#fff}.section{background:#fff}.section.soft{background:#f7f6f2}.
 @media print{.catalogue-back-top,.mobile-filter-bar{display:none!important}}
 
 @media(max-width:800px){.catalogue-active #result-count{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.catalogue-active .catalogue-results-line{min-height:0;margin-bottom:12px}.catalogue-active .catalogue-results-line:has(button[hidden]){margin-bottom:0}}
+
+/* Keep brand, search and navigation available while browsing. */
+:root{--sticky-header-height:162px}header{position:sticky;top:0;z-index:6;box-shadow:0 2px 8px #06264d0a}html{scroll-padding-top:calc(var(--sticky-header-height) + 16px)}
+@media(min-width:801px){.catalogue-filters.advanced-filters{top:calc(var(--sticky-header-height) + 20px);max-height:calc(100dvh - var(--sticky-header-height) - 40px)}}
+@media(max-width:800px){.mobile-filter-bar{top:var(--sticky-header-height)}}

@@ -1,0 +1,1 @@
+const stickyHeader=document.querySelector('header');function sizeStickyHeader(){document.documentElement.style.setProperty('--sticky-header-height',stickyHeader.offsetHeight+'px')}new ResizeObserver(sizeStickyHeader).observe(stickyHeader);sizeStickyHeader();
