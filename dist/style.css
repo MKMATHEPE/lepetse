@@ -85,3 +85,5 @@ main{background:#fff}.section{background:#fff}.section.soft{background:#f7f6f2}.
 @media(min-width:1500px){.matched-catalogue-banner{height:185px;min-height:185px}}
 @media(max-width:800px){.matched-catalogue-banner{min-height:170px;padding:24px 0}.matched-catalogue-banner h1{font-size:31px;max-width:76%}.matched-catalogue-banner p{max-width:72%}}
 @media(max-width:500px){.matched-catalogue-banner{min-height:0;padding:22px 0}.matched-catalogue-banner h1{font-size:27px;max-width:100%;line-height:1.15}.matched-catalogue-banner p{max-width:100%}}
+
+.business-intents{display:flex;flex-direction:column;gap:12px;margin:0 0 20px}.business-intents a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;font-weight:600;text-decoration:none;color:var(--navy)}.business-intents a:hover{text-decoration:underline}
