@@ -446,15 +446,16 @@ const products = [
 {
   "id": "glenanda-10",
   "category": "pack",
-  "name": "Bantex MC2000 / Penflex Ritebox pencil case",
+  "name": "Large pencil case",
   "summary": "Large · 330 × 100 × 50 mm",
   "unit": "Each",
   "specs": {
     "Size": "330 × 100 × 50 mm",
     "Model": "MC2000 / Ritebox",
-    "Type": "Pencil case"
+    "Type": "Pencil case",
+    "Brand alternatives": "Bantex / Penflex"
   },
-  "brand": "Bantex / Penflex",
+  "brand": "Brand to be confirmed",
   "sourceDescription": "BANTEX MC2000/ PENFLEX RITEBOX PENCIL CASE LARGE 330 X 100 X 50MM *BTS*"
 },
 {
@@ -632,15 +633,16 @@ const products = [
 {
   "id": "glenanda-23",
   "category": "art",
-  "name": "Faber-Castell / Adel aquarelle colouring pencils",
+  "name": "Aquarelle colouring pencils",
   "summary": "12 full-length pencils · AHT120212E",
   "unit": "Set of 12 pencils",
   "specs": {
     "Colours": "12 assorted",
     "Type": "Aquarelle colouring pencils",
-    "Model": "AHT120212E"
+    "Model": "AHT120212E",
+    "Brand alternatives": "Faber-Castell / Adel"
   },
-  "brand": "Faber-Castell / Adel",
+  "brand": "Brand to be confirmed",
   "sourceDescription": "FABER-CASTELL / ADEL COLOURING PENCILS AQUARELLE 12S FULL LENGTH (AHT120212E)"
 },
 {
@@ -742,15 +744,16 @@ const products = [
 {
   "id": "glenanda-31",
   "category": "pack",
-  "name": "Marlin / Nexx 3-division pencil bag",
+  "name": "3-division polyester pencil bag",
   "summary": "Polyester · 3 divisions",
   "unit": "Each",
   "specs": {
     "Material": "Polyester",
     "Compartments": "3",
-    "Type": "Pencil bag"
+    "Type": "Pencil bag",
+    "Brand alternatives": "Marlin / Nexx"
   },
-  "brand": "Marlin / Nexx",
+  "brand": "Brand to be confirmed",
   "sourceDescription": "MARLIN/NEXX POLYESTER PENCIL BAG 3 DIVISION"
 },
 {
@@ -783,16 +786,17 @@ const products = [
 {
   "id": "glenanda-34",
   "category": "art",
-  "name": "Pentel / DOMS oil pastels",
+  "name": "Oil pastels",
   "summary": "25 pastels · 9 mm × 60 mm",
   "unit": "Set of 25 pastels",
   "specs": {
     "Colours": "25 assorted",
     "Size": "9 mm × 60 mm",
     "Type": "Oil pastels",
-    "Brand note": "Source names both DOMS and Pentel; confirm required brand"
+    "Brand note": "Source names both DOMS and Pentel; confirm required brand",
+    "Brand alternatives": "Pentel / DOMS"
   },
-  "brand": "Pentel / DOMS (confirm required brand)",
+  "brand": "Brand to be confirmed",
   "sourceDescription": "OFFICE USE DOMS** PENTEL OIL PASTELS 25S REGULAR 9MM DIA X 60MM LENGTH *BTS*"
 },
 {
