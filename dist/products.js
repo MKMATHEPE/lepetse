@@ -833,7 +833,7 @@ const products = [
       "Type": "Ballpoint pen",
       "Model": "Crystal"
     },
-    "brand": "Bic",
+    "brand": "BIC",
     "image": "images/waltons/sku-21111004.webp",
     "imageType": "supplier product photograph",
     "supplierReference": {
