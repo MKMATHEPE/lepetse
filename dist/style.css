@@ -149,3 +149,5 @@ select,.filter-field select,.catalogue-tools select{appearance:none;-webkit-appe
 
 /* Quote basket prices state the ordering basis and incomplete coverage. */
 .basket-line-prices{margin:12px 0 0;font-size:12px}.basket-line-prices>div{display:flex;flex-wrap:wrap;gap:4px 12px;margin:5px 0}.basket-line-prices dt{color:var(--muted)}.basket-line-prices dd{margin:0;color:var(--navy);font-weight:600}.basket-description .basket-price-missing,.basket-price-missing{font-size:12px;color:#80551b;line-height:1.6}.basket-price-total{padding-top:16px}.basket-price-total span{display:block;font-size:12px;color:var(--muted)}.basket-price-total strong{display:block;font-size:27px;line-height:1.4;margin-top:4px;color:var(--navy)}.basket-summary .basket-price-coverage{color:var(--navy);font-size:12px;line-height:1.6}.basket-line-prices dd{overflow-wrap:anywhere}.basket-description{min-width:0}.basket-item>div:last-child{flex-shrink:0}
+
+.school-default-quantity[hidden]{display:none}.school-item-select{width:28px;min-height:28px;margin-bottom:4px}.school-item-select input{flex:none}
