@@ -1,0 +1,876 @@
+// Supplied Glenanda Primary Grade R–7 workbook. Quantities are treated as per learner for this quote builder.
+const schoolGradeLists = {
+  "R": [
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-45",
+      "original": "WAX CRAYONS C9 JUMBO 14MM ROUND THICK 9S BANTEX BKR972383*BTS*",
+      "quantity": 1,
+      "unit": "Set of 9 crayons",
+      "difference": "Croxley jumbo crayons replace Bantex, set of nine. The requested 14 mm diameter is not confirmed."
+    },
+    {
+      "key": "glenanda-09",
+      "original": "AMOS GLUE STICK 40G*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-36",
+      "original": "PUZZLE WOODEN 48 PIECE EACH (ASSORTED DESIGNS)",
+      "quantity": 1,
+      "unit": "Each puzzle",
+      "difference": "RGS wooden puzzle has 48 pieces and a dinosaur design; the list allows assorted designs."
+    },
+    {
+      "key": "glenanda-30",
+      "original": "LIBRARY BOOK BAG CANVAS SHORT HANDLE ZIP *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Polyester replaces the requested canvas bag. Confirm the short handles and zip closure."
+    },
+    {
+      "key": "glenanda-27",
+      "original": "FOLDBACK CLIPS 32MM BLACK EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Clips are sold in packs of 12 rather than individually. Whole-pack quantities and extras are shown."
+    },
+    {
+      "key": "glenanda-21",
+      "original": "DUSTER CHALK BOARD GREEN FELT ECONOMICAL 150MM X 40MM WOODEN",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "The proposed duster is 150 × 40 mm with green felt. Confirm the wooden body."
+    },
+    {
+      "key": "glenanda-39",
+      "original": "SCISSORS MAPED 130MM RIGHT HANDED SCHOLASTIC METAL ROUND TIP (SCHOOL USE)*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Pulse 13 cm scissors: confirm the right-handed, round-tip requirement."
+    },
+    {
+      "key": "glenanda-04",
+      "original": "A4 CARRY FOLDER WITH STUD CLOSE PVC CLEAR 160MIC EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Polypropylene replaces the requested 160-micron PVC. Thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-42",
+      "original": "TEDDY DOUGH 4 X 100G KIT PLAY *BTS*",
+      "quantity": 1,
+      "unit": "Kit of 4 × 100 g",
+      "difference": "Four Teddy tubs are supplied as one set. The requested 100 g weight per tub is not confirmed."
+    }
+  ],
+  "1": [
+    {
+      "key": "glenanda-31",
+      "original": "MARLIN/NEXX POLYESTER PENCIL BAG 3 DIVISION",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline three-compartment polyester pencil bag replaces Marlin / Nexx."
+    },
+    {
+      "key": "glenanda-16",
+      "original": "CHAIR BAG DENIM 53.5CM WITH POCKET SPECIAL SIZE",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "The special 53.5 cm chair bag is not sourced. Include as a sourcing request."
+    },
+    {
+      "key": "glenanda-30",
+      "original": "LIBRARY BOOK BAG CANVAS SHORT HANDLE ZIP *BTS*",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Polyester replaces the requested canvas bag. Confirm the short handles and zip closure."
+    },
+    {
+      "key": "glenanda-34",
+      "original": "OFFICE USE DOMS** PENTEL OIL PASTELS 25S REGULAR 9MM DIA X 60MM LENGTH *BTS*",
+      "quantity": 1,
+      "unit": "Set of 25 pastels",
+      "difference": "Pentel oil pastels, set of 25. The requested 9 × 60 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-28",
+      "original": "FOLDBACK CLIPS 41MM BLACK EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Clips are sold in packs of 12 rather than individually. Whole-pack quantities and extras are shown."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-25",
+      "original": "FABER-CASTELL WAX CRAYONS TRI GRIP 24S SLIM",
+      "quantity": 1,
+      "unit": "Set of 24 crayons",
+      "difference": "Triangular wax crayons replace the requested slim Tri Grip version. Confirm the shape and thickness."
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 10,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-08",
+      "original": "AMOS GLUE STICK 22G",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-40",
+      "original": "SHARPENER 2 HOLE PLASTIC BARREL MAPED SHAKER 534755 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Shaker two-hole sharpener is proposed. Confirm the requested 534755 model."
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-39",
+      "original": "SCISSORS MAPED 130MM RIGHT HANDED SCHOLASTIC METAL ROUND TIP (SCHOOL USE)*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Pulse 13 cm scissors: confirm the right-handed, round-tip requirement."
+    },
+    {
+      "key": "glenanda-07",
+      "original": "A4 SECRETARIAL FOLDER CLEAR EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "A clear gusset presentation folder replaces the requested secretarial folder."
+    },
+    {
+      "key": "glenanda-42",
+      "original": "TEDDY DOUGH 4 X 100G KIT PLAY *BTS*",
+      "quantity": 1,
+      "unit": "Kit of 4 × 100 g",
+      "difference": "Four Teddy tubs are supplied as one set. The requested 100 g weight per tub is not confirmed."
+    },
+    {
+      "key": "glenanda-02",
+      "original": "A4 2 RING BINDER 25MM BOARD TRUNK BIN-6000-01 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Croxley trunk-board binder replaces Board Trunk BIN-6000-01. Confirm the model change."
+    },
+    {
+      "key": "glenanda-11",
+      "original": "BANTEX MULTIPUNCH FILING POCKETS 10S 50MIC A4",
+      "quantity": 1,
+      "unit": "Pack of 10 pockets",
+      "difference": "Bantex CopySafe pockets are sold individually. Ten pockets are required for each pack on the school list; confirm the thickness."
+    }
+  ],
+  "2": [
+    {
+      "key": "glenanda-31",
+      "original": "MARLIN/NEXX POLYESTER PENCIL BAG 3 DIVISION",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline three-compartment polyester pencil bag replaces Marlin / Nexx."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 10,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 2,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-28",
+      "original": "FOLDBACK CLIPS 41MM BLACK EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Clips are sold in packs of 12 rather than individually. Whole-pack quantities and extras are shown."
+    },
+    {
+      "key": "glenanda-17",
+      "original": "DELI WHITEBOARD MARKER BULLET TIP BLACK 2 OR 1.8MM*BTS*",
+      "quantity": 8,
+      "unit": "Each",
+      "difference": "Monami SigmaFlo black 2 mm whiteboard marker replaces Deli."
+    },
+    {
+      "key": "glenanda-39",
+      "original": "SCISSORS MAPED 130MM RIGHT HANDED SCHOLASTIC METAL ROUND TIP (SCHOOL USE)*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Pulse 13 cm scissors: confirm the right-handed, round-tip requirement."
+    },
+    {
+      "key": "glenanda-05",
+      "original": "A4 LEVER ARCH FILE BLACK POLYPRO DONAU EACH *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Croxley replaces Donau. A4 black polypropylene lever arch file."
+    },
+    {
+      "key": "glenanda-46",
+      "original": "WRITING WHITE SLATE A4 SIZE **PARROT BRAND",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-15",
+      "original": "CHAIR BAG DENIM 44CM WITH POCKET *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Trefoil denim chair bag is listed as 44 cm. Confirm the required fit and pocket."
+    },
+    {
+      "key": "glenanda-09",
+      "original": "AMOS GLUE STICK 40G*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-26",
+      "original": "FLARD CARD / SPREIKAART (PRE-CUT) 0 - 1000",
+      "quantity": 1,
+      "unit": "Set",
+      "difference": "Butterfly flard cards are proposed. Confirm coverage of the requested 0–1000 number range."
+    },
+    {
+      "key": "glenanda-22",
+      "original": "DUSTER SMALL BOARD 50MM WOOD & GREEN FELT",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-44",
+      "original": "WAX CRAYONS A24 THIN 8MM ROUND THIN 24S (DALA)",
+      "quantity": 1,
+      "unit": "Set of 24 crayons",
+      "difference": "Staedtler Noris replaces Dala, set of 24. The requested 8 mm round shape is not confirmed."
+    },
+    {
+      "key": "glenanda-41",
+      "original": "SHARPENER 2 HOLE Y+POLKA CONTAINER EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline WP61 two-hole container sharpener replaces Y+ Polka."
+    },
+    {
+      "key": "glenanda-18",
+      "original": "DISPLAY BOOK A4 10 POCKET 50MIC KANGAROO",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Kangaroo A4 10-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-34",
+      "original": "OFFICE USE DOMS** PENTEL OIL PASTELS 25S REGULAR 9MM DIA X 60MM LENGTH *BTS*",
+      "quantity": 1,
+      "unit": "Set of 25 pastels",
+      "difference": "Pentel oil pastels, set of 25. The requested 9 × 60 mm dimensions are not confirmed."
+    }
+  ],
+  "3": [
+    {
+      "key": "glenanda-39",
+      "original": "SCISSORS MAPED 130MM RIGHT HANDED SCHOLASTIC METAL ROUND TIP (SCHOOL USE)*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Pulse 13 cm scissors: confirm the right-handed, round-tip requirement."
+    },
+    {
+      "key": "glenanda-01",
+      "original": "**DISC**A4 2 RING BINDER 25MM PVC BLUE",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Croxley A4 blue PVC binder replaces the discontinued entry. Two D-rings, 25 mm."
+    },
+    {
+      "key": "glenanda-34",
+      "original": "OFFICE USE DOMS** PENTEL OIL PASTELS 25S REGULAR 9MM DIA X 60MM LENGTH *BTS*",
+      "quantity": 2,
+      "unit": "Set of 25 pastels",
+      "difference": "Pentel oil pastels, set of 25. The requested 9 × 60 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-46",
+      "original": "WRITING WHITE SLATE A4 SIZE **PARROT BRAND",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-22",
+      "original": "DUSTER SMALL BOARD 50MM WOOD & GREEN FELT",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-30",
+      "original": "LIBRARY BOOK BAG CANVAS SHORT HANDLE ZIP *BTS*",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Polyester replaces the requested canvas bag. Confirm the short handles and zip closure."
+    },
+    {
+      "key": "glenanda-31",
+      "original": "MARLIN/NEXX POLYESTER PENCIL BAG 3 DIVISION",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline three-compartment polyester pencil bag replaces Marlin / Nexx."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-18",
+      "original": "DISPLAY BOOK A4 10 POCKET 50MIC KANGAROO",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Kangaroo A4 10-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-09",
+      "original": "AMOS GLUE STICK 40G*BTS*",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-40",
+      "original": "SHARPENER 2 HOLE PLASTIC BARREL MAPED SHAKER 534755 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Shaker two-hole sharpener is proposed. Confirm the requested 534755 model."
+    },
+    {
+      "key": "glenanda-17",
+      "original": "DELI WHITEBOARD MARKER BULLET TIP BLACK 2 OR 1.8MM*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": "Monami SigmaFlo black 2 mm whiteboard marker replaces Deli."
+    },
+    {
+      "key": "glenanda-28",
+      "original": "FOLDBACK CLIPS 41MM BLACK EACH",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Clips are sold in packs of 12 rather than individually. Whole-pack quantities and extras are shown."
+    },
+    {
+      "key": "glenanda-06",
+      "original": "A4 MULTIPUNCH POCKETS PP 40/50 MIC 10S GLASS CLEAR ANTI-STATIC",
+      "quantity": 1,
+      "unit": "Pack of 10 pockets",
+      "difference": "Primeline pockets are 60 micron; the school list requests 40/50 micron. Both packs contain 10."
+    },
+    {
+      "key": "glenanda-15",
+      "original": "CHAIR BAG DENIM 44CM WITH POCKET *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Trefoil denim chair bag is listed as 44 cm. Confirm the required fit and pocket."
+    },
+    {
+      "key": "glenanda-33",
+      "original": "NOVA ANTIBACTERIAL WET WIPES PACK 72 WIPES",
+      "quantity": 2,
+      "unit": "Pack of 72 wipes",
+      "difference": "Primeline antibacterial wipes replace Nova. Packs contain 40 rather than 72; quantities are calculated by wipe count."
+    }
+  ],
+  "4": [
+    {
+      "key": "glenanda-20",
+      "original": "DISPLAY BOOK A4 30 POCKET 50MIC KANGAROO",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Kangaroo A4 30-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-03",
+      "original": "A4 80P EXAM PAD PUNCHED",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "The proposed pad has 100 pages; the school list specifies 80 pages."
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-13",
+      "original": "BIC ORANGE FINE POINT BLUE PEN*BTS*",
+      "quantity": 6,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-34",
+      "original": "OFFICE USE DOMS** PENTEL OIL PASTELS 25S REGULAR 9MM DIA X 60MM LENGTH *BTS*",
+      "quantity": 1,
+      "unit": "Set of 25 pastels",
+      "difference": "Pentel oil pastels, set of 25. The requested 9 × 60 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-09",
+      "original": "AMOS GLUE STICK 40G*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-38",
+      "original": "SCISSORS 165MM ORANGE HANDLE SCHOOL BLADE 1.5MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped 16 cm scissors replace the specified orange-handle 165 mm scissors. Blade thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-40",
+      "original": "SHARPENER 2 HOLE PLASTIC BARREL MAPED SHAKER 534755 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Shaker two-hole sharpener is proposed. Confirm the requested 534755 model."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-14",
+      "original": "BLUE PENCIL BAG (LONG) 33CM CLEAR",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline blue clear-front 33 cm pencil bag replaces the unbranded clear bag."
+    },
+    {
+      "key": "glenanda-18",
+      "original": "DISPLAY BOOK A4 10 POCKET 50MIC KANGAROO",
+      "quantity": 3,
+      "unit": "Each",
+      "difference": "Kangaroo A4 10-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    }
+  ],
+  "5": [
+    {
+      "key": "glenanda-19",
+      "original": "DISPLAY BOOK A4 20 POCKET 50MIC KANGAROO",
+      "quantity": 3,
+      "unit": "Each",
+      "difference": "Kangaroo A4 20-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-03",
+      "original": "A4 80P EXAM PAD PUNCHED",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "The proposed pad has 100 pages; the school list specifies 80 pages."
+    },
+    {
+      "key": "glenanda-23",
+      "original": "FABER-CASTELL / ADEL COLOURING PENCILS AQUARELLE 12S FULL LENGTH (AHT120212E)",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Croxley Aquarelle pencils replace Faber-Castell / Adel. Set of 12."
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-13",
+      "original": "BIC ORANGE FINE POINT BLUE PEN*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-08",
+      "original": "AMOS GLUE STICK 22G",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-38",
+      "original": "SCISSORS 165MM ORANGE HANDLE SCHOOL BLADE 1.5MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped 16 cm scissors replace the specified orange-handle 165 mm scissors. Blade thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-40",
+      "original": "SHARPENER 2 HOLE PLASTIC BARREL MAPED SHAKER 534755 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Shaker two-hole sharpener is proposed. Confirm the requested 534755 model."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-10",
+      "original": "BANTEX MC2000/ PENFLEX RITEBOX PENCIL CASE LARGE 330 X 100 X 50MM *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Bantex McCasey 30 cm case replaces the specified 330 × 100 × 50 mm case. Confirm the size."
+    },
+    {
+      "key": "glenanda-20",
+      "original": "DISPLAY BOOK A4 30 POCKET 50MIC KANGAROO",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Kangaroo A4 30-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    }
+  ],
+  "6": [
+    {
+      "key": "glenanda-19",
+      "original": "DISPLAY BOOK A4 20 POCKET 50MIC KANGAROO",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Kangaroo A4 20-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-12",
+      "original": "BIC CRYSTAL MEDIUM XTRA LIFE BALL PEN BLUE",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": "BIC Crystal blue pen is proposed. The Xtra Life medium model is not confirmed."
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-08",
+      "original": "AMOS GLUE STICK 22G",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-32",
+      "original": "MATH SET 11 PIECE CROXLEY EACH 3500",
+      "quantity": 1,
+      "unit": "Set of 11 pieces",
+      "difference": "Primeline mathematics set replaces Croxley 3500. Confirm the requested 11-piece contents."
+    },
+    {
+      "key": "glenanda-38",
+      "original": "SCISSORS 165MM ORANGE HANDLE SCHOOL BLADE 1.5MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped 16 cm scissors replace the specified orange-handle 165 mm scissors. Blade thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-40",
+      "original": "SHARPENER 2 HOLE PLASTIC BARREL MAPED SHAKER 534755 *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped Shaker two-hole sharpener is proposed. Confirm the requested 534755 model."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-10",
+      "original": "BANTEX MC2000/ PENFLEX RITEBOX PENCIL CASE LARGE 330 X 100 X 50MM *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Bantex McCasey 30 cm case replaces the specified 330 × 100 × 50 mm case. Confirm the size."
+    },
+    {
+      "key": "glenanda-18",
+      "original": "DISPLAY BOOK A4 10 POCKET 50MIC KANGAROO",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Kangaroo A4 10-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-03",
+      "original": "A4 80P EXAM PAD PUNCHED",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "The proposed pad has 100 pages; the school list specifies 80 pages."
+    }
+  ],
+  "7": [
+    {
+      "key": "glenanda-19",
+      "original": "DISPLAY BOOK A4 20 POCKET 50MIC KANGAROO",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Kangaroo A4 20-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-20",
+      "original": "DISPLAY BOOK A4 30 POCKET 50MIC KANGAROO",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "Kangaroo A4 30-pocket display book. The requested 50-micron pocket thickness is not confirmed."
+    },
+    {
+      "key": "glenanda-03",
+      "original": "A4 80P EXAM PAD PUNCHED",
+      "quantity": 2,
+      "unit": "Each",
+      "difference": "The proposed pad has 100 pages; the school list specifies 80 pages."
+    },
+    {
+      "key": "glenanda-24",
+      "original": "FABER-CASTELL COLOURING PENCILS 12S 7MM HEXAGONAL 175MM LENGTH*BTS*",
+      "quantity": 1,
+      "unit": "Set of 12 pencils",
+      "difference": "Faber-Castell full-size pencils, set of 12. The requested 7 × 175 mm dimensions are not confirmed."
+    },
+    {
+      "key": "glenanda-35",
+      "original": "PILOT EE102 PLASTIC ERASER LARGE 60MM X 20MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline Soft Touch 60 mm eraser replaces Pilot EE102. Confirm the required width."
+    },
+    {
+      "key": "glenanda-13",
+      "original": "BIC ORANGE FINE POINT BLUE PEN*BTS*",
+      "quantity": 8,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-29",
+      "original": "GOLDFABER PENCIL HB EACH*BTS*",
+      "quantity": 4,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-09",
+      "original": "AMOS GLUE STICK 40G*BTS*",
+      "quantity": 5,
+      "unit": "Each",
+      "difference": ""
+    },
+    {
+      "key": "glenanda-37",
+      "original": "RULER 30CM ASSORTED COLOURS PLASTIC EACH (1CM & 0.5CM) DEANS*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Primeline clear 30 cm ruler replaces Deans assorted colours. Confirm the required markings."
+    },
+    {
+      "key": "glenanda-32",
+      "original": "MATH SET 11 PIECE CROXLEY EACH 3500",
+      "quantity": 1,
+      "unit": "Set of 11 pieces",
+      "difference": "Primeline mathematics set replaces Croxley 3500. Confirm the requested 11-piece contents."
+    },
+    {
+      "key": "glenanda-10",
+      "original": "BANTEX MC2000/ PENFLEX RITEBOX PENCIL CASE LARGE 330 X 100 X 50MM *BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Bantex McCasey 30 cm case replaces the specified 330 × 100 × 50 mm case. Confirm the size."
+    },
+    {
+      "key": "glenanda-43",
+      "original": "TISSUES PACK OF 90S PILLOWY SOFT PACK. USE FOR PVT",
+      "quantity": 4,
+      "unit": "Pack of 90 tissues",
+      "difference": "Twinsaver replaces Pillowy Soft. Both packs contain 90 tissues."
+    },
+    {
+      "key": "glenanda-38",
+      "original": "SCISSORS 165MM ORANGE HANDLE SCHOOL BLADE 1.5MM*BTS*",
+      "quantity": 1,
+      "unit": "Each",
+      "difference": "Maped 16 cm scissors replace the specified orange-handle 165 mm scissors. Blade thickness is not confirmed."
+    }
+  ]
+};
+let schoolPicker={grade:'R',learners:1};
+function schoolProduct(key){return products.find(p=>p.id===key)||products.find(p=>p.replacementFor?.includes(key))||products.find(p=>p.id===retiredProducts.find(p=>p.id===key)?.replacementId)}
+function schoolConversion(key){return {'glenanda-27':{required:1,supplied:12,label:'clips'},'glenanda-28':{required:1,supplied:12,label:'clips'},'glenanda-11':{required:10,supplied:1,label:'pockets'},'glenanda-33':{required:72,supplied:40,label:'wipes'}}[key]||{required:1,supplied:1,label:''}}
+function schoolPlan(grade,learners){if(!schoolGradeLists[grade]||!Number.isInteger(learners)||learners<1||learners>9999)return [];return schoolGradeLists[grade].map(line=>{const p=schoolProduct(line.key),factor=schoolConversion(line.key),needed=line.quantity*learners*factor.required,quantity=Math.ceil(needed/factor.supplied),extra=quantity*factor.supplied-needed;return {...line,perLearner:line.quantity,product:p,needed,quantity,extra,factor}})}
+function schoolPackNote(line){if(line.factor.required===1&&line.factor.supplied===1)return '';return `${line.needed} ${line.factor.label} required; ${line.quantity} × ${line.product.unit.toLowerCase()}${line.extra?` supplies ${line.extra} extra ${line.factor.label}`:''}.`}
+function validatedSchoolMeta(meta,productId){if(!meta||meta.school!=='glenanda-primary'||!schoolGradeLists[meta.grade]||!Number.isInteger(meta.learners)||meta.learners<1||meta.learners>9999||!schoolGradeLists[meta.grade].some(x=>x.key===meta.key))return null;if(productId&&schoolProduct(meta.key)?.id!==productId)return null;return {school:'glenanda-primary',grade:meta.grade,learners:meta.learners,key:meta.key}}
+function schoolBasketDescription(p,meta){const line=schoolPlan(meta.grade,meta.learners).find(x=>x.key===meta.key);return `Glenanda Primary · Grade ${meta.grade} · ${meta.learners} learner${meta.learners===1?'':'s'} — ${p.name}. School requirement per learner: ${line.perLearner} × ${line.unit}; ${line.original}. ${line.difference?'Replacement reviewed: '+line.difference+' ':''}${schoolPackNote(line)}`.trim()}
+function schoolListSection(){return `<section class="school-grade-section"><div class="wrap"><div class="school-grade-heading"><div><span class="eyebrow">Glenanda Primary</span><h2>Build a grade stationery list</h2><p>Use the supplied list to prepare a quote. Check these requirements against the school’s current list.</p></div></div><form id="school-grade-form"><div class="school-grade-controls"><div class="field"><label for="school-grade">Grade</label><select id="school-grade">${Object.keys(schoolGradeLists).sort((a,b)=>a==='R'?-1:b==='R'?1:Number(a)-Number(b)).map(g=>`<option value="${g}" ${schoolPicker.grade===g?'selected':''}>Grade ${g}</option>`).join('')}</select></div><div class="field"><label for="school-learners">Number of learners</label><input id="school-learners" type="number" min="1" max="9999" step="1" value="${schoolPicker.learners}" required></div><p class="help">Spreadsheet quantities are treated as <strong>per learner</strong>. Whole packs are calculated across all learners.</p></div><div id="school-list-results"></div><p class="error" id="school-list-error" role="alert"></p><div class="school-grade-actions"><button class="btn dark" id="school-add-list" type="submit">Add grade list to quote</button><span class="help">A quotation request only. Prices, alternatives, packing and availability require confirmation.</span></div></form></div></section>`}
+function renderSchoolRows(){const plan=schoolPlan(schoolPicker.grade,schoolPicker.learners),target=$('#school-list-results');if(!plan.length){target.innerHTML='<p>Enter a whole number of learners between 1 and 9,999.</p>';$('#school-add-list').disabled=true;return}const needsReview=plan.some(x=>x.difference||schoolPackNote(x));target.innerHTML=`<p class="school-list-count" role="status">Grade ${esc(schoolPicker.grade)} · ${plan.length} items · ${schoolPicker.learners} learner${schoolPicker.learners===1?'':'s'}</p><div class="school-list-table-wrap"><table class="school-list-table"><thead><tr><th scope="col">School requirement and proposed product</th><th scope="col">Per learner</th><th scope="col">Quote quantity</th></tr></thead><tbody>${plan.map(line=>`<tr><td><div class="school-product-cell">${line.product.image?`<img src="${esc(line.product.image)}" alt="" width="56" height="56" loading="lazy">`:''}<div><a href="#product-${line.product.id}">${esc(line.product.name)}</a><p>${esc(line.product.summary)}</p><details><summary>Original school specification</summary><p>${esc(line.original)}</p></details>${line.difference?`<p class="school-difference"><strong>Review replacement:</strong> ${esc(line.difference)}</p>`:''}</div></div></td><td>${line.perLearner} × ${esc(line.unit)}</td><td><strong>${line.quantity} × ${esc(line.product.unit)}</strong>${schoolPackNote(line)?`<p class="school-pack-note">${esc(schoolPackNote(line))}</p>`:''}</td></tr>`).join('')}</tbody></table></div>${needsReview?'<label class="school-review"><input id="school-reviewed" type="checkbox" required><span>I have reviewed the replacement differences and whole-pack quantities shown above.</span></label>':''}`;$('#school-add-list').disabled=false}
+function bindSchoolLists(){if(!$('#school-grade-form'))return;renderSchoolRows();$('#school-grade').onchange=e=>{schoolPicker.grade=e.target.value;$('#school-list-error').textContent='';renderSchoolRows()};$('#school-learners').oninput=e=>{schoolPicker.learners=Number(e.target.value);$('#school-list-error').textContent='';renderSchoolRows()};$('#school-grade-form').onsubmit=e=>{e.preventDefault();const plan=schoolPlan(schoolPicker.grade,schoolPicker.learners);if(!plan.length)return;const reviewed=$('#school-reviewed');if(reviewed&&!reviewed.checked){reviewed.reportValidity();return}if(plan.some(x=>!x.product||x.quantity>999999)||items.length+plan.length>250){$('#school-list-error').textContent='This list exceeds the quote basket limit. Reduce the learner count or start a separate enquiry.';return}for(const line of plan){const school={school:'glenanda-primary',grade:schoolPicker.grade,learners:schoolPicker.learners,key:line.key};items.push({productId:line.product.id,quantity:line.quantity,unit:line.product.unit,description:schoolBasketDescription(line.product,school),school})}formData.buyerType='School / education';updateCount();$('#school-add-list').disabled=true;const d=$('#basket-dialog');d.innerHTML=`<h2 id="basket-dialog-title">Grade ${esc(schoolPicker.grade)} list added</h2><p>Added ${plan.length} item lines for ${schoolPicker.learners} learner${schoolPicker.learners===1?'':'s'}. Product quantities use the ordering units shown in the list.</p><div class="dialog-actions"><button class="btn outline" id="school-continue" type="button">Continue browsing</button><a class="btn dark" id="school-view-basket" href="#basket">View basket</a></div>`;d.showModal();$('#school-continue').onclick=()=>d.close();$('#school-view-basket').onclick=()=>d.close();$('#school-view-basket').focus()}}
