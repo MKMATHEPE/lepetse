@@ -609,5 +609,15 @@ const priceReferences = {
     "basis": "Retail reference for this replacement and its displayed ordering unit. Supplier promotions may change; final Lepetse price by quotation.",
     "checkedOn": "2026-11-10",
     "taxBasis": "Waltons retail price as displayed including VAT; confirm applicable VAT and delivery in the final quotation."
+  },
+  "glenanda-22": {
+    "amountMinor": 1256,
+    "currency": "ZAR",
+    "retailer": "Office Gear",
+    "sourceUrl": "https://officegear.co.za/croxley-wooden-handle-duster-50mm-green-felt-dus50/",
+    "referenceProduct": "Croxley Wooden Handle Duster 50mm Green Felt — DUS50",
+    "basis": "Retail reference for one 50 mm duster. Final Lepetse price by quotation.",
+    "checkedOn": "2026-11-10",
+    "taxBasis": "Retail price including tax as displayed by Office Gear; delivery excluded."
   }
 };

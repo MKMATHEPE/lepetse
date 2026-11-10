@@ -1080,16 +1080,27 @@ const products = [
   {
     "id": "glenanda-22",
     "category": "files",
-    "name": "Small wooden green felt board duster",
-    "summary": "50 mm · each",
+    "name": "Croxley wooden green-felt duster 50 mm",
+    "summary": "50 mm · wood and green felt",
     "unit": "Each",
     "specs": {
       "Size": "50 mm",
       "Material": "Wood and green felt",
-      "Type": "Board duster"
+      "Type": "Board duster",
+      "Model": "DUS50"
     },
-    "brand": "Not specified",
-    "sourceDescription": "DUSTER SMALL BOARD 50MM WOOD & GREEN FELT"
+    "brand": "Croxley",
+    "sourceDescription": "DUSTER SMALL BOARD 50MM WOOD & GREEN FELT",
+    "image": "images/croxley-dus50.jpg",
+    "imageType": "supplier product photograph",
+    "supplierReference": {
+      "name": "Office Gear",
+      "sku": "DUS50",
+      "url": "https://officegear.co.za/croxley-wooden-handle-duster-50mm-green-felt-dus50/",
+      "imageSourceUrl": "https://cdn11.bigcommerce.com/s-64wwb4pbz6/products/2035299/images/17867064/02f2d1eea87bfd3daebea91cd81dcc36__30743.1793968274.386.513.jpg?c=1",
+      "checkedOn": "2026-11-10",
+      "matchStatus": "Matched 50 mm wooden green-felt duster; availability by quotation"
+    }
   },
   {
     "id": "waltons-207661",
