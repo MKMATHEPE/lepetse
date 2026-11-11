@@ -6,7 +6,7 @@ const selectedPaymentProvider=Object.freeze({id:'peach-payments',name:'Peach Pay
 let checkoutDraft={},checkoutReview=false;
 function rfqBuyer(){const buyer=new URLSearchParams(location.hash.split('?')[1]||'').get('buyer');return ['business','government'].includes(buyer)?buyer:''}
 function rfqHref(route){return '#'+route+(rfqBuyer()?'?mode=quote&buyer='+rfqBuyer():'')}
-function syncRfqNavigation(){const route=location.hash.slice(1).split('?')[0],showBasket=['business','government'].includes(route);document.querySelectorAll('header a[href^="#basket"],.mobile-basket').forEach(a=>{a.hidden=!showBasket;a.href=showBasket?'#basket?mode=quote&buyer='+route:rfqHref('basket');a.innerHTML=(rfqBuyer()?'RFQ basket ':'Quote basket ')+'<span class="basket-count">'+(items.length?'('+items.length+')':'')+'</span>'})}
+function syncRfqNavigation(){const route=location.hash.slice(1).split('?')[0],showBasket=['business','government'].includes(route);document.querySelectorAll('header a[href="#cart"]').forEach(a=>a.hidden=showBasket);document.querySelectorAll('header a[href^="#basket"],.mobile-basket').forEach(a=>{a.hidden=!showBasket;a.href=showBasket?'#basket?mode=quote&buyer='+route:rfqHref('basket');a.innerHTML=(rfqBuyer()?'RFQ basket ':'Quote basket ')+'<span class="basket-count">'+(items.length?'('+items.length+')':'')+'</span>'})}
 function quotationMode(){return new URLSearchParams(location.hash.split('?')[1]||'').get('mode')==='quote'}
 function quoteModeQuery(){const p=new URLSearchParams(location.hash.split('?')[1]||'');return 'mode=quote'+(['business','government'].includes(p.get('buyer'))?'&buyer='+p.get('buyer'):'')}
 function productIntentHref(id){return '#product-'+id+(quotationMode()?'?'+quoteModeQuery():'')}
