@@ -172,3 +172,5 @@ select,.filter-field select,.catalogue-tools select{appearance:none;-webkit-appe
 
 /* RFQ delivery addresses, contacts and requested timing. */
 .rfq-location{border:1px solid var(--line);border-radius:4px;padding:18px;margin:20px 0;min-width:0}.rfq-delivery .rfq-location>legend{font-size:16px;margin:0;padding:0 6px}.rfq-contact-choice{display:flex;align-items:center;gap:9px;margin:0 0 16px;min-height:32px;cursor:pointer}.rfq-contact-choice input{width:17px;height:17px;flex:none;margin:0;accent-color:#947021}.rfq-delivery-count{margin-top:22px}.delivery-area-alert{font-size:12px;line-height:1.6;color:#80551b;background:#fbf5e5;border-left:3px solid #b18b36;padding:10px 12px}.delivery-area-alert:empty{display:none}.rfq-review-location{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line)}.rfq-review-location h4{margin:0 0 14px;font-size:14px}.rfq-review-location>p{font-size:12px;line-height:1.6;overflow-wrap:anywhere}.rfq-delivery input[readonly]{background:#f7f8f6}@media(max-width:500px){.rfq-location{padding:14px}.rfq-delivery .fields{grid-template-columns:1fr}}
+
+header a[hidden],.mobile-basket[hidden]{display:none!important}
