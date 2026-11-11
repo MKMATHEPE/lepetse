@@ -31,13 +31,13 @@ const priceReferences = {
     "taxBasis": "Retail price as displayed by the source; confirm applicable VAT in the final quotation."
   },
   "waltons-801215": {
-    "amountMinor": 7495,
+    "amountMinor": 7990,
     "currency": "ZAR",
     "retailer": "Waltons",
     "sourceUrl": "https://www.waltons.co.za/buy/mondi-rotatrim-copy-paper-a4-80gsm-bond-white-ream-500-sheets",
     "referenceProduct": "Mondi Rotatrim Copy Paper A4 80gsm Bond White Ream 500 Sheets",
-    "basis": "Retail reference for this replacement and its displayed ordering unit. Supplier promotions may change; final Lepetse price by quotation.",
-    "checkedOn": "2026-11-10",
+    "basis": "Regular Waltons retail reference; promotional price may be lower. Proposed indicative price for Lepetse; final price by quotation.",
+    "checkedOn": "2026-11-11",
     "taxBasis": "Waltons retail price as displayed including VAT; confirm applicable VAT and delivery in the final quotation."
   },
   "waltons-801224": {
