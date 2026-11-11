@@ -179,3 +179,5 @@ header a[hidden],.mobile-basket[hidden]{display:none!important}
 @media(pointer:coarse){.head nav a.btn.small[href="#cart"],.head nav a.btn.small[href^="#basket"]{min-height:44px}}
 
 .rfq-items-section>legend{margin-bottom:6px}.rfq-items-section>legend+.help{margin:0 0 12px;line-height:1.45}
+
+.basket-catalogue-group{margin-bottom:18px}.basket-catalogue-group>.basket-group-title{margin-bottom:2px;padding-bottom:7px;line-height:1.3}.basket-catalogue-group>.basket-item:first-of-type{padding-top:10px}
