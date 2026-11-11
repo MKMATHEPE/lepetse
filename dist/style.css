@@ -177,3 +177,5 @@ header a[hidden],.mobile-basket[hidden]{display:none!important}
 
 .head nav a.btn.small[href="#cart"],.head nav a.btn.small[href^="#basket"]{padding-top:5px;padding-bottom:5px;min-height:28px;line-height:1.3}
 @media(pointer:coarse){.head nav a.btn.small[href="#cart"],.head nav a.btn.small[href^="#basket"]{min-height:44px}}
+
+.rfq-items-section>legend{margin-bottom:6px}.rfq-items-section>legend+.help{margin:0 0 12px;line-height:1.45}
