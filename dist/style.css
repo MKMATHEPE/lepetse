@@ -274,3 +274,5 @@ footer{padding-top:18px;padding-bottom:10px}.foot-grid{grid-template-columns:.85
 .catalogue-pagination>button:disabled{color:#76818a;background:#f5f6f7;opacity:.6}
 .catalogue-section{padding-bottom:24px}
 }
+
+.catalogue-pagination{display:flex;flex-wrap:nowrap;gap:6px;margin-top:24px}.catalogue-pagination .pagination-number{display:block}.catalogue-pagination>button{width:auto;min-width:36px;min-height:44px;padding:8px;font-size:12px}.catalogue-pagination>button:first-child,.catalogue-pagination>button:last-child{min-width:46px}@media(max-width:400px){.catalogue-pagination{gap:3px}.catalogue-pagination>button{min-width:0;flex:1;padding:8px 2px}.catalogue-pagination>button:first-child,.catalogue-pagination>button:last-child{min-width:39px;flex:1.25}}
