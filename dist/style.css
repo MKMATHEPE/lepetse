@@ -246,3 +246,18 @@ footer{padding-top:18px;padding-bottom:10px}.foot-grid{grid-template-columns:.85
 .curro-table td:nth-child(2){margin-top:auto}.curro-table input[type=number]{width:100%;min-width:0}
 .curro-table td:nth-child(3){font-size:12px;min-height:36px}.curro-table td:nth-child(3):before{margin-bottom:3px}
 }
+
+/* Two catalogue products per row on phones. */
+@media(max-width:600px){
+.catalogue-layout .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.catalogue-layout .product-card .product-image{height:100px;padding:10px}
+.catalogue-layout .product-body{padding:10px;min-width:0}
+.catalogue-layout .product-body h3{font-size:13px;line-height:18px;min-height:36px}
+.catalogue-layout .product-body .card-specification{font-size:11px;line-height:16px;min-height:32px}
+.catalogue-layout .product-body .product-brand{font-size:10px}
+.catalogue-layout .reference-price strong{font-size:18px}
+.catalogue-layout .product-body .product-controls{flex-direction:column;gap:7px;margin-top:auto}
+.catalogue-layout .product-controls input{width:100%;min-height:44px;font-size:16px;padding:8px;box-sizing:border-box}
+.catalogue-layout .product-controls .btn{width:100%;min-height:44px;font-size:12px;white-space:normal;padding:8px 4px;box-sizing:border-box}
+.catalogue-layout .product-card .unit-label{overflow-wrap:anywhere}
+}
