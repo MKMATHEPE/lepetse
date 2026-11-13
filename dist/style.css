@@ -238,3 +238,11 @@ footer{padding-top:18px;padding-bottom:10px}.foot-grid{grid-template-columns:.85
 .curro-detail .school-summary-help{line-height:1.6;overflow-wrap:anywhere}
 }
 @media(max-width:600px){.curro-detail .school-change{display:block;width:fit-content;max-width:100%;margin-bottom:14px}.curro-detail>.wrap>.eyebrow{display:block;line-height:1.5}.curro-detail h1{letter-spacing:-.5px;margin-top:8px}}
+/* Two compact school item cards per row where phone width permits. */
+@media(min-width:380px) and (max-width:600px){
+.curro-table tbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:stretch}
+.curro-table tr{display:flex;flex-direction:column;gap:10px;margin:0;padding:11px;min-width:0}
+.curro-table td:first-child{flex:1}.curro-table label{gap:7px;font-size:12px;line-height:1.45}.curro-table small{margin-left:0;font-size:11px;line-height:1.4}
+.curro-table td:nth-child(2){margin-top:auto}.curro-table input[type=number]{width:100%;min-width:0}
+.curro-table td:nth-child(3){font-size:12px;min-height:36px}.curro-table td:nth-child(3):before{margin-bottom:3px}
+}
