@@ -1,0 +1,18 @@
+{
+  "sourceFiles": {
+    "products.js": "ac05172c962abf097e176adb49ce59d6df613f7e49e934db6848f9a5d897ef05",
+    "imported-products.js": "2b410ec93acbc89ade2f850a5627b9839f4af8c6ff50ba20f4946b66eda62426",
+    "price-references.js": "465cdaffd49913cf7514ce35fcc13b7685219f3a9ba69c342906e99e98aa9638",
+    "school-lists.js": "cd72e6d4526deb025748651dc833bc17c2a184399e23b92a79764e3c11915d47",
+    "curro-data.js": "c0dd2c201a84b06f8041545ba71b5ddc78fca96bbc521fadb8cc9edb75235125",
+    "curro-school.js": "6f552263ae4480d51957ce1c8b8f9e12974fb583c84d456a52e3c3bcb79ada20"
+  },
+  "activeProducts": 256,
+  "inactiveLegacyRequirements": 233,
+  "products": 489,
+  "priceReferences": 62,
+  "schools": 2,
+  "schoolLists": 13,
+  "schoolItems": 422,
+  "approvedSellingPrices": 0
+}

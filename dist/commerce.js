@@ -1,7 +1,8 @@
 // Separate purchase intent from RFQs. No payments or customer data are transmitted.
 const shoppingStorageKey='lepetse-shopping-cart-v1';
 let shoppingStorageUnavailable=false;
-let shoppingCart=(()=>{try{const raw=JSON.parse(localStorage.getItem(shoppingStorageKey)||'[]');return Array.isArray(raw)?raw.slice(0,250).filter(x=>products.some(p=>p.id===x.productId)&&Number.isInteger(x.quantity)&&x.quantity>0&&x.quantity<=999999).map(x=>({productId:x.productId,quantity:x.quantity})):[]}catch{return []}})();
+function restoreShoppingCart(){try{const raw=JSON.parse(localStorage.getItem(shoppingStorageKey)||'[]');return Array.isArray(raw)?raw.slice(0,250).filter(x=>products.some(p=>p.id===x.productId)&&Number.isInteger(x.quantity)&&x.quantity>0&&x.quantity<=999999).map(x=>({productId:x.productId,quantity:x.quantity})):[]}catch{return []}}
+let shoppingCart=restoreShoppingCart();
 const selectedPaymentProvider=Object.freeze({id:'peach-payments',name:'Peach Payments',plan:'Growth',integration:'orchestration-hosted-checkout',activation:'pending-registration'});
 let checkoutDraft={},checkoutReview=false;
 function rfqBuyer(){const buyer=new URLSearchParams(location.hash.split('?')[1]||'').get('buyer');return ['business','government'].includes(buyer)?buyer:''}
