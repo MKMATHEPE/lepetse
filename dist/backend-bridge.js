@@ -69,7 +69,7 @@
       }
     }else document.documentElement.dataset.dataSource='snapshot';
     main.removeAttribute('aria-busy');
-    const script=document.createElement('script');script.src='app.js?v=63';document.body.appendChild(script);
+    const script=document.createElement('script');script.src='app.js?v=64';document.body.appendChild(script);
   }
   await boot();
 })();

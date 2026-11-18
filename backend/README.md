@@ -14,13 +14,13 @@ export MAVEN_SKIP_RC=true
 mvn -s maven-settings.xml spring-boot:run
 ```
 
-By default the app binds to `127.0.0.1:8080`. `GET /actuator/health` checks database connectivity. `GET /api/catalogue/products?page=0&size=10` returns active products with pagination (maximum 100). `categoryId` is an optional numeric category filter. Unapproved products return no selling price. Migrations import the current 256-product catalogue automatically. No write endpoints or staff login are exposed.
+By default the app binds to `127.0.0.1:8080`. `GET /actuator/health` checks database connectivity. `GET /api/catalogue/products?page=0&size=10` returns active products with pagination (maximum 100). `categoryId` is an optional numeric category filter. Unapproved products return no selling price. Migrations import the current 256-product catalogue automatically. Business/government RFQ submission is now available locally; staff login is not implemented. See [RFQ.md](RFQ.md).
 
 Open `http://127.0.0.1:8080/` to use the connected website. Maven packages `../dist` into the application jar, so pages, images and API share one origin; a separate frontend server and CORS configuration are unnecessary. Rebuild after changing frontend files. `/runtime-config.js` is served by Spring Boot with API mode enabled. The static copy uses snapshot mode for the current Sites/Vercel prototype.
 
 `GET /api/site-data` is a versioned compatibility response for this frontend. It reads products, image paths, reference prices and school requirements from PostgreSQL in a consistent read transaction. `GET /api/schools` returns published school lists and requirement rows. The browser loads data before restoring baskets and rendering the initial route, retaining the existing IDs, filters and layout. An API failure displays a retry action; API mode does not silently fall back to the snapshot. The existing small catalogue still filters and paginates on the client after its initial data request.
 
-This connection is read-only. Cart/basket selections remain on the device, and contact details remain in memory. RFQ submission, order creation, email delivery and payments are still unavailable. Catalogue prices continue to be clearly labelled research references; no approved selling prices or live checkout have been activated. A public Spring Boot host and persistent PostgreSQL service are still required before the published website can use this backend. Do not configure the public site with a localhost API URL. The application binds to loopback by default; a hosting deployment will need its own bind address, database credentials and HTTPS configuration.
+Catalogue and school data remain read-only. Business/government RFQs can now be submitted from the local Spring Boot website and saved with a reference number. Cart/basket selections remain on the device; contact details and attachments are transmitted only on explicit submission. Order creation, email delivery and payments remain unavailable. Catalogue prices continue to be clearly labelled research references; no approved selling prices or live checkout have been activated. A public Spring Boot host and persistent PostgreSQL service are still required before the published website can use this backend. Do not configure the public site with a localhost API URL. The application binds to loopback by default; a hosting deployment will need its own bind address, database credentials and HTTPS configuration.
 
 For integration tests, use a separate empty test database, set the same DB environment variables to it, and run:
 
@@ -62,7 +62,7 @@ Tests intentionally skip unless `LEPETSE_DB_TEST=true`; they must not target a p
 2. Credentials use environment variables. Hibernate schema management is `validate`; Flyway owns schema changes. Never commit credentials.
 3. Flyway applies `src/main/resources/db/migration/V1__initial_schema.sql` on startup. Once applied to a shared database, add V2 migrations rather than modifying V1.
 4. Catalogue and school-list imports are complete. Selling prices remain unapproved and checkout disabled until reviewed. Provenance and image match status are retained.
-5. Build catalogue reads first, then transactional RFQ submission and owner-only quotation editing. Add checkout and verified Peach payment events afterwards.
+5. Catalogue reads and transactional RFQ submission are complete locally. Next add authenticated owner quotation management, then checkout and verified Peach payment events.
 
 ## Required service controls
 
@@ -74,7 +74,7 @@ Use private object storage for attachments; store only keys here. Apply file siz
 
 ## Validation status
 
-Verified on 14 November 2026 against isolated local PostgreSQL 17.5, without Docker: all three Flyway migrations applied, Hibernate schema validation passed, all five integration tests passed, and Maven produced the runnable jar. Tests cover catalogue reads, pagination validation, hidden unapproved prices, checkout price requirements, restricted RFQ buyer types, import coverage, whole-pack conversion, unknown school-list years, reused books, replay without duplicates or overwriting approved selling prices, database-backed website responses and packaged frontend resources. Browser verification covered PostgreSQL mode, ten-product pagination, category filters, cart refresh retention, Curro subject selection and quote retention, Glenanda replacements and connection-error handling. No live database has been created or changed. Nothing has been pushed to GitHub.
+Verified on 14 November 2026 against isolated local PostgreSQL 17.5, without Docker: the initial three Flyway migrations applied, Hibernate schema validation passed, all five integration tests passed, and Maven produced the runnable jar. Tests cover catalogue reads, pagination validation, hidden unapproved prices, checkout price requirements, restricted RFQ buyer types, import coverage, whole-pack conversion, unknown school-list years, reused books, replay without duplicates or overwriting approved selling prices, database-backed website responses and packaged frontend resources. Browser verification covered PostgreSQL mode, ten-product pagination, category filters, cart refresh retention, Curro subject selection and quote retention, Glenanda replacements and connection-error handling. No live database has been created or changed. Nothing has been pushed to GitHub.
 
 ## Imported source snapshot
 
@@ -90,4 +90,6 @@ Verified on 14 November 2026 against isolated local PostgreSQL 17.5, without Doc
 
 `import-manifest.json` records counts and hashes of the source files. `node scripts/generate-import.cjs` reproduces V3 from trusted local prototype files; it is a development tool, not a runtime importer. Once V3 has been deployed to a shared database, preserve it and create a new migration for updates. Source snapshots retain original specifications, spreadsheet row numbers, image provenance and source descriptions. The replay check confirms inserts do not duplicate rows or reset an approved price; it does not treat V3 as an ongoing catalogue synchronisation mechanism.
 
-Next application work: transactional RFQ submission and owner quotation management. The local website connection is complete; hosting the backend and database is separate from publishing the static prototype.
+Next application work: authenticated owner RFQ review and quotation management. The local website connection is complete; hosting the backend and database is separate from publishing the static prototype.
+
+RFQ update, 18 November 2026: V4 adds submission keys and metadata; all ten integration tests passed. Catalogue submission was verified through the browser and directly in PostgreSQL. The document-upload browser check was interrupted; automated multipart tests passed. See [RFQ.md](RFQ.md) for setup, guarantees and remaining deployment work.

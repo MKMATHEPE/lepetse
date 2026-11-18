@@ -43,7 +43,7 @@ class DatabaseIntegrationTest {
                 .andExpect(jsonPath("$.items[1].sellingPrice").value(85.00));
         http.perform(get("/api/catalogue/products").param("size", "101")).andExpect(status().isBadRequest());
         http.perform(get("/api/catalogue/products").param("page", "-1")).andExpect(status().isBadRequest());
-        assertThat(jdbc.queryForObject("select count(*) from flyway_schema_history where success", Integer.class)).isEqualTo(3);
+        assertThat(jdbc.queryForObject("select count(*) from flyway_schema_history where success", Integer.class)).isEqualTo(4);
     }
 
     @Test void checkoutCannotBeEnabledWithoutAnApprovedPrice() {

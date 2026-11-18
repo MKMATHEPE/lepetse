@@ -18,6 +18,13 @@ spring:
   flyway:
     enabled: true
     clean-disabled: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 55MB
+lepetse:
+  rfq:
+    storage-directory: ${RFQ_STORAGE_DIRECTORY:./var/rfq-files}
 management:
   endpoints:
     web:

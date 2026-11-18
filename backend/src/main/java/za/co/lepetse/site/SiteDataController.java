@@ -21,7 +21,7 @@ public class SiteDataController {
 
     @GetMapping(value="/runtime-config.js", produces="application/javascript")
     public String runtimeConfig() {
-        return "window.LEPETSE_CONFIG={dataSource:'api',apiBase:''};";
+        return "window.LEPETSE_CONFIG={dataSource:'api',apiBase:'',rfqSubmission:true};";
     }
 
     private Map<String,Object> json(Object value) {
