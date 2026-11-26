@@ -1,0 +1,137 @@
+#workspace.theme-workspace {
+  padding: 28px clamp(18px, 3vw, 38px);
+  overflow: auto;
+}
+
+.theme-workspace .workspace-heading {
+  margin-bottom: 18px;
+}
+
+#storefront-theme {
+  max-width: 570px;
+}
+
+.theme-options {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-options legend {
+  margin-bottom: 12px;
+  color: #53585f;
+  padding: 0;
+}
+
+.theme-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 14px;
+}
+
+.theme-choice {
+  display: block;
+  border: 1px solid #dce0e4;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.theme-choice:has(input:checked) {
+  border-color: #8b692a;
+  box-shadow: 0 0 0 1px #8b692a;
+}
+
+.theme-options:disabled .theme-choice {
+  cursor: default;
+}
+
+.theme-sample {
+  display: block;
+  height: 76px;
+  border-top: 24px solid var(--sample-header);
+  background: var(--sample-canvas);
+  padding: 14px;
+}
+
+.theme-sample.classic {
+  --sample-header: #06264d;
+  --sample-canvas: #fff;
+}
+
+.theme-sample.charcoal {
+  --sample-header: #1c1d1f;
+  --sample-canvas: #f8f7f2;
+}
+
+.theme-sample span {
+  display: block;
+  width: 42px;
+  height: 10px;
+  border-radius: 2px;
+  background: #d5ad59;
+}
+
+.theme-choice-label,
+.theme-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.theme-choice-label {
+  padding: 12px;
+  border-top: 1px solid #e4e5e7;
+}
+
+.theme-choice-label input {
+  margin: 0;
+  accent-color: #8b692a;
+}
+
+.theme-active {
+  margin-left: auto;
+  color: #555b61;
+  font-size: .8rem;
+}
+
+.theme-actions {
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.theme-actions p {
+  margin: 0;
+}
+
+.theme-actions button {
+  margin-inline-start: auto;
+}
+
+#last-applied,
+.theme-feedback {
+  margin-top: 12px;
+}
+
+.theme-feedback p {
+  margin: 0;
+}
+
+.storefront-display {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #dce0e4;
+}
+
+.storefront-display label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.storefront-display input {
+  margin: 0;
+  accent-color: #8b692a;
+}

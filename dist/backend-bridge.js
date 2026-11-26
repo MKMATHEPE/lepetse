@@ -54,6 +54,9 @@
       directory.sort((a,b)=>rank(a.id)-rank(b.id));
       schoolDirectory.splice(0,schoolDirectory.length,...directory);
       shoppingCart=restoreShoppingCart();
+      document.documentElement.dataset.storefrontTheme = data.theme === 'charcoal' ? 'charcoal' : 'classic';
+      document.documentElement.dataset.rotateCatalogueBanner = data.rotateCatalogueBanner !== false;
+      document.querySelector('.footer-whatsapp').hidden = data.showFooterWhatsApp === false;
       document.documentElement.dataset.dataSource='postgresql';
     }finally{clearTimeout(timer)}
   }

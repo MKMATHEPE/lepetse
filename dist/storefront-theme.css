@@ -1,0 +1,94 @@
+:root[data-storefront-theme="charcoal"] {
+  --navy: #222224;
+  --deep: #1c1d1f;
+  --gold: #d5ad59;
+  --ink: #252426;
+  --muted: #615d57;
+  --paper: #f8f7f2;
+  --line: #d8d3c9;
+}
+
+[data-storefront-theme="charcoal"] body,
+[data-storefront-theme="charcoal"] main,
+[data-storefront-theme="charcoal"] .section,
+[data-storefront-theme="charcoal"] .shop-hero,
+[data-storefront-theme="charcoal"] .page-hero {
+  background-color: var(--paper);
+}
+
+[data-storefront-theme="charcoal"] body > header,
+[data-storefront-theme="charcoal"] footer {
+  background-color: var(--deep);
+  color: #f8f7f2;
+}
+
+[data-storefront-theme="charcoal"] .head .logo,
+[data-storefront-theme="charcoal"] .head .logo *,
+[data-storefront-theme="charcoal"] .head nav > a:not(.btn),
+[data-storefront-theme="charcoal"] .head .menu {
+  color: #f8f7f2;
+}
+
+[data-storefront-theme="charcoal"] .head .logo .monogram span,
+[data-storefront-theme="charcoal"] .head nav > a[aria-current="page"]:not(.btn) {
+  color: var(--gold);
+}
+
+[data-storefront-theme="charcoal"] .head nav {
+  background-color: var(--deep);
+  border-color: #56524c;
+}
+
+[data-storefront-theme="charcoal"] .head .menu {
+  background-color: var(--deep);
+}
+
+[data-storefront-theme="charcoal"] .product-card {
+  background-color: #fff;
+  border-color: var(--line);
+}
+
+[data-storefront-theme="charcoal"] .card-price-line strong,
+[data-storefront-theme="charcoal"] .compact-advert-price {
+  color: #886012;
+}
+
+.footer-contact-item .footer-whatsapp[hidden] {
+  display: none;
+}
+
+.stationery-wordmark {
+  display: block;
+  position: relative;
+  width: clamp(132px, 18vw, 224px);
+  height: clamp(29px, 4.1vw, 49px);
+  overflow: hidden;
+}
+
+.stationery-wordmark img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stationery-brand small {
+  margin-top: 0;
+}
+
+.head .stock-logo-light,
+[data-storefront-theme="charcoal"] .head .stock-logo-dark {
+  display: none;
+}
+
+[data-storefront-theme="charcoal"] .head .stock-logo-light {
+  display: block;
+}
+
+.footer-company .stationery-wordmark {
+  width: 140px;
+  height: 34px;
+}

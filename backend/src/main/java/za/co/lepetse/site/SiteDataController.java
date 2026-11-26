@@ -75,6 +75,8 @@ public class SiteDataController {
             price.put("retailer",row.get("retailer")); price.put("sourceUrl",row.get("source_url"));
             prices.put(row.get("legacy_id").toString(),price);
         }
-        return Map.of("schemaVersion",1,"products",active,"retiredProducts",retired,"priceReferences",prices,"schools",schools());
+        var display = StorefrontThemeController.read(jdbc);
+        return Map.of("schemaVersion",1,"products",active,"retiredProducts",retired,"priceReferences",prices,"schools",schools(),"theme",display.theme(),
+            "rotateCatalogueBanner",display.rotateCatalogueBanner(),"showFooterWhatsApp",display.showFooterWhatsApp());
     }
 }

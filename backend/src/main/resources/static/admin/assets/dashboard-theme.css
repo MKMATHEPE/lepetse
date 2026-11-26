@@ -1,0 +1,38 @@
+:root[data-dashboard-theme="charcoal"] {
+  --navy: #292826;
+  --gold: #b38a40;
+  --ink: #252426;
+  --muted: #625e57;
+  --line: #ded9ce;
+  --sidebar: #f4f1e9;
+  --background: #f8f7f2;
+  --soft: #eeebe3;
+}
+
+[data-dashboard-theme="charcoal"] body,
+[data-dashboard-theme="charcoal"] #workspace {
+  background: var(--background);
+}
+
+[data-dashboard-theme="charcoal"] .topbar {
+  background: #1c1d1f;
+  border-color: #413c33;
+  color: #f8f7f2;
+}
+
+[data-dashboard-theme="charcoal"] .topbar :is(.breadcrumb, .quiet) {
+  color: #e1dcd1;
+}
+
+[data-dashboard-theme="charcoal"] .topbar .quiet:hover:not(:disabled) {
+  background: #383734;
+}
+
+[data-dashboard-theme="charcoal"] .sidebar .nav-active {
+  background: #e9dfc9;
+  color: #3d3019;
+}
+
+[data-dashboard-theme="charcoal"] .primary:hover:not(:disabled) {
+  background: #41403d;
+}

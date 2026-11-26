@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Storefront settings | Lepetse</title>
+  <link rel="stylesheet" href="/admin/assets/admin.css?v=10">
+  <link rel="stylesheet" href="/admin/assets/form-fields.css">
+  <link rel="stylesheet" href="/admin/assets/storefront-theme.css?v=4">
+<link rel="stylesheet" href="/admin/assets/dashboard-theme.css"></head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/admin/index.html">LEPETSE<span>Private administration</span></a>
+    <span class="breadcrumb">Workspace / Storefront settings</span>
+  </header>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <p class="sidebar-label">Workspace</p>
+      <a href="/admin/index.html">Requests</a>
+      <a href="/admin/suppliers.html">Suppliers &amp; pricing</a>
+      <a href="/admin/opportunities.html">Work Opportunities</a>
+      <a href="/">View website <span aria-hidden="true">↗</span></a>
+      <a class="nav-active" aria-current="page" href="/admin/storefront-theme.html">Storefront settings</a>
+    </aside>
+    <main id="workspace" class="theme-workspace">
+      <div class="workspace-heading"><h1>Storefront settings</h1></div>
+      <form id="storefront-theme">
+        <fieldset id="theme-options" class="theme-options" disabled>
+          <legend>Website and admin appearance</legend>
+          <div class="theme-choices">
+            <label class="theme-choice">
+              <span class="theme-sample classic" aria-hidden="true"><span></span></span>
+              <span class="theme-choice-label"><input type="radio" name="theme" value="classic" required> Classic navy <span class="theme-active" data-applied="classic" hidden>Applied</span></span>
+            </label>
+            <label class="theme-choice">
+              <span class="theme-sample charcoal" aria-hidden="true"><span></span></span>
+              <span class="theme-choice-label"><input type="radio" name="theme" value="charcoal" required> Charcoal &amp; gold <span class="theme-active" data-applied="charcoal" hidden>Applied</span></span>
+            </label>
+          </div>
+          <div class="storefront-display">
+            <label><input type="checkbox" name="rotateCatalogueBanner"> Rotate featured products automatically</label>
+            <label><input type="checkbox" name="showFooterWhatsApp"> Show WhatsApp link in the footer</label>
+          </div>
+        </fieldset>
+        <div class="theme-actions">
+          <button class="primary" type="submit" disabled>Apply settings</button>
+        </div>
+        <p id="last-applied" class="muted" hidden></p>
+        <div class="theme-feedback">
+          <p id="theme-status" role="status">Loading settings…</p>
+        </div>
+      </form>
+    </main>
+  </div>
+  <script src="/admin/assets/storefront-theme.js?v=5" defer></script>
+</body>
+</html>
