@@ -50,6 +50,15 @@ class RfqSubmissionTest {
         data.put("items",List.of(Map.of("description","Changed requirement","quantity",3,"unit","Each")));
         http.perform(multipart("/api/rfqs").file(body(data)).header("Idempotency-Key",key)).andExpect(status().isConflict());
     }
+    @Test void requestedBrandRemainsTheCustomerRequirement() throws Exception {
+        var data=request("business");
+        data.put("items",List.of(Map.of("productId","waltons-801215","description","A4 paper","quantity",2,"unit","Ream","requestedBrand","Client requested brand")));
+        String key=UUID.randomUUID().toString();
+        http.perform(multipart("/api/rfqs").file(body(data)).header("Idempotency-Key",key)).andExpect(status().isCreated());
+        Long id=jdbc.queryForObject("select id from rfq where submission_key=?",Long.class,UUID.fromString(key));
+        http.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get("/api/admin/rfqs/"+id).with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user("owner").roles("ADMIN")))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.items[0].requested_brand").value("Client requested brand"));
+    }
     @Test void governmentRequirementsAreRequiredAndDocumentsArePrivatePendingChecks() throws Exception {
         var data=request("government");String key=UUID.randomUUID().toString();
         var file=new MockMultipartFile("files","rfq.pdf","application/pdf","%PDF-1.7\nTest fixture\n%%EOF".getBytes());
@@ -59,9 +68,12 @@ class RfqSubmissionTest {
         @SuppressWarnings("unchecked") var buyer=(Map<String,Object>)data.get("buyer");buyer.remove("channel");
         http.perform(multipart("/api/rfqs").file(body(data)).header("Idempotency-Key",UUID.randomUUID())).andExpect(status().isBadRequest());
     }
+    @Test void schoolsUseTheSameRequestIntakeWithoutGovernmentFields() throws Exception {
+        http.perform(multipart("/api/rfqs").file(body(request("schools"))).header("Idempotency-Key",UUID.randomUUID())).andExpect(status().isCreated());
+    }
     @Test void invalidBuyerAndNegativeQuantityCannotCreateRequests() throws Exception {
         int count=jdbc.queryForObject("select count(*) from rfq",Integer.class);
-        http.perform(multipart("/api/rfqs").file(body(request("schools"))).header("Idempotency-Key",UUID.randomUUID())).andExpect(status().isBadRequest());
+        http.perform(multipart("/api/rfqs").file(body(request("personal"))).header("Idempotency-Key",UUID.randomUUID())).andExpect(status().isBadRequest());
         var data=request("business");data.put("items",List.of(Map.of("description","Paper","quantity",-1,"unit","Each")));
         http.perform(multipart("/api/rfqs").file(body(data)).header("Idempotency-Key",UUID.randomUUID())).andExpect(status().isBadRequest());
         assertThat(jdbc.queryForObject("select count(*) from rfq",Integer.class)).isEqualTo(count);

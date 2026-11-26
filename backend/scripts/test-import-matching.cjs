@@ -1,0 +1,14 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const context=vm.createContext({products:[],console});vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../src/main/resources/static/admin/assets/import-matching.js'),'utf8'),context);
+const candidate=(description,products)=>{context.products=products;context.line={description};return vm.runInContext('importMatchCandidates(line)',context)};
+const product={id:1,name:'BIC Crystal blue ballpoint pen',brand:'BIC',ordering_unit:'Each'};
+assert.equal(candidate('BIC Crystal blue ballpoint pen',[product])[0].high,true);
+assert.equal(candidate('BIC Crystal black ballpoint pen',[product])[0]?.high||false,false);
+assert.equal(candidate('BIC Crystal blue ballpoint pen',[{...product,brand:'Pilot'}])[0]?.high||false,false);
+assert.equal(candidate('BIC Crystal blue ballpoint pen',[{...product,ordering_unit:'Pack of 60'}])[0].high,false);
+assert.equal(candidate('BIC paper 80gsm',[{...product,name:'BIC paper 100gsm'}])[0]?.high||false,false);
+assert.equal(candidate('BIC pencils 12',[{...product,name:'BIC pencils 24'}])[0]?.high||false,false);
+context.products=[product,{...product,id:2}];context.line={description:product.name};assert.equal(vm.runInContext('uniqueStrongMatch(line)',context),null);
+context.products=[product];assert.equal(vm.runInContext('importMatchCandidates(line,"doesnotexist").length',context),0);
+assert.equal(vm.runInContext('importMatchCandidates(line,"crystal blue").length',context),1);
+console.log('9 supplier matching checks passed.');

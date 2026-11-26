@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const {supplyCategories,opportunityDue}=require('../src/main/resources/static/admin/assets/opportunity-list.js');
+assert.deepEqual(supplyCategories({title:'Supply and delivery of toilet paper and tissues'}),['Hygiene']);
+assert.deepEqual(supplyCategories({title:'Office stationery and cleaning chemicals'}),['Stationery','Cleaning']);
+assert.deepEqual(supplyCategories({title:'Supply of personal protective equipment'}),['PPE']);
+assert.deepEqual(supplyCategories({title:'Provision of bottled drinking water'}),['Other supplies']);
+assert.deepEqual(supplyCategories({title:'Paper supplies',requirements:'Cleaning stationery furniture'}),['Other supplies']);
+assert.deepEqual(opportunityDue('2026-11-25T00:30:00Z',new Date('2026-11-24T21:30:00Z')),{label:'Tomorrow',urgent:true});
+assert.deepEqual(opportunityDue('2026-11-25T07:00:00Z',new Date('2026-11-24T23:30:00Z')),{label:'Today',urgent:true});
+assert.equal(opportunityDue('2026-11-24T08:00:00Z',new Date('2026-11-24T09:00:00Z')).label,'Deadline passed');
+assert.equal(opportunityDue('bad').label,'Date to confirm');
+console.log('Opportunity categories and SAST deadline checks passed.');

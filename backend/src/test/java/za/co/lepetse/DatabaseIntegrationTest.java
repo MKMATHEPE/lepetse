@@ -43,7 +43,7 @@ class DatabaseIntegrationTest {
                 .andExpect(jsonPath("$.items[1].sellingPrice").value(85.00));
         http.perform(get("/api/catalogue/products").param("size", "101")).andExpect(status().isBadRequest());
         http.perform(get("/api/catalogue/products").param("page", "-1")).andExpect(status().isBadRequest());
-        assertThat(jdbc.queryForObject("select count(*) from flyway_schema_history where success", Integer.class)).isEqualTo(4);
+        assertThat(jdbc.queryForObject("select count(*) from flyway_schema_history where success", Integer.class)).isEqualTo(9);
     }
 
     @Test void checkoutCannotBeEnabledWithoutAnApprovedPrice() {
@@ -72,9 +72,9 @@ class DatabaseIntegrationTest {
                 .andExpect(content().string(org.hamcrest.Matchers.containsString("backend-bridge.js")));
     }
 
-    @Test void rfqRejectsBuyerTypesOutsideBusinessAndGovernment() {
+    @Test void rfqRejectsUnknownBuyerTypes() {
         long customer = jdbc.queryForObject("insert into customer(contact_name,email,phone) values ('Test','test@example.invalid','000') returning id", Long.class);
-        assertThatThrownBy(() -> jdbc.update("insert into rfq(reference,customer_id,buyer_type,purchase_type,contact_snapshot) values ('TEST',?,'schools','once_off','{}')", customer))
+        assertThatThrownBy(() -> jdbc.update("insert into rfq(reference,customer_id,buyer_type,purchase_type,contact_snapshot) values ('TEST',?,'personal','once_off','{}')", customer))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 

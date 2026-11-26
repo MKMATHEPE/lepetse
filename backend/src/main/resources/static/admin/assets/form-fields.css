@@ -1,0 +1,14 @@
+/* Shared admin fields: preserve layout and typography, use an underline for focus. */
+:is(.admin-layout,.login-card) :is(input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]):not([type=submit]):not([type=button]),textarea,select){
+ border:0!important;border-bottom:1px solid var(--line,#dfe2e6)!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;outline:none!important;
+}
+:is(.admin-layout,.login-card) :is(input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]):not([type=submit]):not([type=button]),textarea,select):focus{
+ border-bottom-color:#b58d39!important;box-shadow:0 1px 0 #b58d39!important;outline:none!important;
+}
+:is(.admin-layout,.login-card) input[type=number]{appearance:textfield;-moz-appearance:textfield;}
+:is(.admin-layout,.login-card) input[type=number]::-webkit-inner-spin-button,
+:is(.admin-layout,.login-card) input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+:is(.admin-layout,.login-card) select{appearance:auto;}
+:is(.admin-layout,.login-card) :is(input,textarea,select):user-invalid{border-bottom-color:#a13d32!important;}
+.inventory-entry p strong{display:inline;}

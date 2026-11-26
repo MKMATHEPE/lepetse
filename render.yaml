@@ -1,0 +1,59 @@
+# Review the plans and estimated monthly bill in Render before applying.
+# Automatic deploys are off: publishing remains an explicit action.
+services:
+  - type: web
+    name: lepetse
+    runtime: docker
+    plan: standard
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: off
+    healthCheckPath: /actuator/health
+    disk:
+      name: private-rfq-files
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: lepetse-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: lepetse-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: lepetse-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: lepetse-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: lepetse-db
+          property: password
+      - key: SERVER_ADDRESS
+        value: 0.0.0.0
+      - key: SESSION_COOKIE_SECURE
+        value: 'true'
+      - key: SERVER_FORWARD_HEADERS_STRATEGY
+        value: native
+      - key: RFQ_STORAGE_DIRECTORY
+        value: /var/data/rfq-files
+      - key: ADMIN_BOOTSTRAP_USERNAME
+        sync: false
+      - key: ADMIN_BOOTSTRAP_PASSWORD_HASH
+        sync: false
+
+databases:
+  - name: lepetse-db
+    databaseName: lepetse
+    user: lepetse
+    plan: basic-256mb
+    region: frankfurt
+    postgresMajorVersion: '17'
+    diskSizeGB: 1
+    ipAllowList: []

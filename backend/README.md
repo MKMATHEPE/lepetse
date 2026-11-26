@@ -14,7 +14,7 @@ export MAVEN_SKIP_RC=true
 mvn -s maven-settings.xml spring-boot:run
 ```
 
-By default the app binds to `127.0.0.1:8080`. `GET /actuator/health` checks database connectivity. `GET /api/catalogue/products?page=0&size=10` returns active products with pagination (maximum 100). `categoryId` is an optional numeric category filter. Unapproved products return no selling price. Migrations import the current 256-product catalogue automatically. Business/government RFQ submission is now available locally; staff login is not implemented. See [RFQ.md](RFQ.md).
+By default the app binds to `127.0.0.1:8080`. `GET /actuator/health` checks database connectivity. `GET /api/catalogue/products?page=0&size=10` returns active products with pagination (maximum 100). `categoryId` is an optional numeric category filter. Unapproved products return no selling price. Migrations import the current 256-product catalogue automatically. Business/government RFQ submission and private staff sign-in are available locally. See [RFQ.md](RFQ.md) and [ADMIN.md](ADMIN.md).
 
 Open `http://127.0.0.1:8080/` to use the connected website. Maven packages `../dist` into the application jar, so pages, images and API share one origin; a separate frontend server and CORS configuration are unnecessary. Rebuild after changing frontend files. `/runtime-config.js` is served by Spring Boot with API mode enabled. The static copy uses snapshot mode for the current Sites/Vercel prototype.
 
@@ -70,7 +70,7 @@ The schema is a foundation, not the complete application. The service must valid
 
 Enforce authenticated staff access for pricing and status changes. Validate legal state transitions, lock records while finalising quotations/orders, prevent editing issued quotations (create a revision), and verify purchase-order authorisation where required. Confirm order totals and payment currency/amount against server-side prices, never browser values. Verify payment webhook signatures before recording a successful payment; event IDs prevent duplicates.
 
-Use private object storage for attachments; store only keys here. Apply file size/type limits, malware checks, expiring download links, access controls, retention/deletion rules and backups. Do not log personal details or payment secrets. Authentication, staff audit history, email retry/outbox, inventory/reservations, refunds and delivery allocation across sites are follow-on work, not implemented features.
+Use private object storage for attachments; store only keys here. Apply file size/type limits, malware checks, expiring download links, access controls, retention/deletion rules and backups. Do not log personal details or payment secrets. Staff sign-in and the Reviewing action's audit history are implemented locally. Email retry/outbox, inventory/reservations, refunds and delivery allocation across sites remain follow-on work.
 
 ## Validation status
 
@@ -90,6 +90,12 @@ Verified on 14 November 2026 against isolated local PostgreSQL 17.5, without Doc
 
 `import-manifest.json` records counts and hashes of the source files. `node scripts/generate-import.cjs` reproduces V3 from trusted local prototype files; it is a development tool, not a runtime importer. Once V3 has been deployed to a shared database, preserve it and create a new migration for updates. Source snapshots retain original specifications, spreadsheet row numbers, image provenance and source descriptions. The replay check confirms inserts do not duplicate rows or reset an approved price; it does not treat V3 as an ongoing catalogue synchronisation mechanism.
 
-Next application work: authenticated owner RFQ review and quotation management. The local website connection is complete; hosting the backend and database is separate from publishing the static prototype.
+The private admin sign-in and RFQ inbox are now implemented locally. See [ADMIN.md](ADMIN.md) to create your owner account and open `/admin/`. Next application work is owner pricing and quotation documents. Hosting the backend and database is separate from publishing the static prototype.
 
 RFQ update, 18 November 2026: V4 adds submission keys and metadata; all ten integration tests passed. Catalogue submission was verified through the browser and directly in PostgreSQL. The document-upload browser check was interrupted; automated multipart tests passed. See [RFQ.md](RFQ.md) for setup, guarantees and remaining deployment work.
+
+Admin update, 18 November 2026: V5 adds private admin accounts and an activity log. Spring Security protects the admin pages and API with password sign-in and sessions. The inbox supports search, buyer/status filters and request detail; New requests can be marked Reviewing. All 15 integration tests passed, and sign-in → inbox → review action → sign-out was browser-verified. No real admin account or default password is created. See [ADMIN.md](ADMIN.md) for setup and limits.
+
+Notes and deadline update, 18 November 2026: V6 adds private append-only staff notes and audited response targets. The admin inbox/detail view highlights approaching or passed closing/response dates and urgent requested delivery dates, using South African time, with a Needs attention filter. These are dashboard indicators only; no notification service is connected. All 22 tests passed, and saved notes/targets, refresh retention and attention filtering were browser-verified. Public customer pages are unchanged.
+
+Workspace redesign, 18 November 2026: the private admin now uses saved per-account view tabs and a desktop side reader/full-page mode, with compact properties and Items/Notes/Details/Activity sections. V7 stores validated private view preferences. All 24 tests passed, and desktop/mobile browser checks confirmed the existing RFQ actions still work. Public website pages are unchanged.

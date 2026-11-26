@@ -1,6 +1,7 @@
 package za.co.lepetse.rfq;
 
 import jakarta.validation.Valid;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -16,7 +17,7 @@ public record RfqRequest(
             @NotBlank @Size(max=150) String contact,
             @NotBlank @Email @Size(max=254) String email,
             @Size(max=40) String phone,
-            @NotBlank @Pattern(regexp="business|government") String buyerType,
+            @NotBlank @Pattern(regexp="business|government|schools") String buyerType,
             @NotBlank @Pattern(regexp="once_off|repeat|scheduled_repeat") String purchaseType,
             @Size(max=120) String reference,
             @Future OffsetDateTime deadline,
@@ -36,7 +37,8 @@ public record RfqRequest(
             @Size(max=120) String productId,
             @NotBlank @Size(max=4000) String description,
             @NotNull @Min(1) @Max(999999) Integer quantity,
-            @NotBlank @Size(max=250) String unit) {}
+            @NotBlank @Size(max=250) String unit,
+            @JsonInclude(JsonInclude.Include.NON_NULL) @Size(max=200) String requestedBrand) {}
     public record Delivery(
             @Size(max=250) String street,
             @Size(max=250) String building,

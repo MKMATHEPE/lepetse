@@ -1,0 +1,26 @@
+function supplierLineCells(l,duplicate=false){return `<td>${h(l.description)}<small>${h(l.supplier_sku)}${duplicate?' · Repeated supplier code — review':''} · ${l.product_id?(l.match_type==='exact'?'Exact match':'Alternative — review'):'Unmatched'}</small></td><td>${l.quoted_packs} × ${h(l.pack_label)}${l.quoted_packs>100?'<small class="error">Check the number of whole packs</small>':''}</td><td>${money(l.pack_price_ex_vat)}</td><td>${l.units_per_pack}</td><td>${money(Number(l.pack_price_ex_vat)/l.units_per_pack)}<small>${h(l.availability||'Unconfirmed')}${l.lead_time?' · '+h(l.lead_time):''}</small></td><td><button type="button" class="quiet" data-edit-line="${l.id}">Edit</button></td>`;}
+function bindSupplierInline(target,quoteId,lines){
+ const duplicate=l=>lines.filter(other=>other.supplier_sku===l.supplier_sku).length>1;
+ function restore(row,l){row.oninput=null;row.classList.remove('supplier-row-editing');row.innerHTML=supplierLineCells(l,duplicate(l));bindRow(row,l);row.querySelector('[data-edit-line]').focus();}
+ function bindRow(row,l){row.querySelector('[data-edit-line]').onclick=()=>{
+  const formId='supplier-row-form-'+l.id;
+  const input=(name,label,value,extra='')=>`<input form="${formId}" name="${name}" aria-label="${label}" value="${h(value??'')}" ${extra}>`;
+  row.classList.add('supplier-row-editing');
+  row.innerHTML=`<td>${input('description','Supplier description',l.description,'required maxlength="1000"')}<small>${input('sku','Supplier code',l.supplier_sku,'required maxlength="100"')}</small><details class="supplier-match-details"><summary>Change match</summary><div class="supplier-match-controls"><select form="${formId}" name="productId" aria-label="Catalogue match">${productOptions().replace(`value="${l.product_id}"`,`value="${l.product_id}" selected`)}</select><select form="${formId}" name="matchType" aria-label="Match type">${options(l.match_type,[['unmatched','Unmatched'],['exact','Exact specification'],['alternative','Alternative — review']])}</select></div></details></td><td><div class="supplier-pack-inline">${input('quotedPacks','Quoted packs',l.quoted_packs,'type="number" required min="1" max="1000000" step="1"')}<span>×</span>${input('packLabel','Pack label',l.pack_label,'required maxlength="100"')}</div></td><td>${input('packPrice','Pack cost excluding VAT',l.pack_price_ex_vat,'type="number" required min="0" max="9999999999" step="0.0001"')}</td><td>${input('unitsPerPack','Ordering units per pack',l.units_per_pack,'type="number" required min="1" max="1000000" step="1"')}</td><td><output data-unit-cost aria-live="polite">${money(Number(l.pack_price_ex_vat)/l.units_per_pack)}</output><small>${input('availability','Availability',l.availability,'maxlength="200"')}${input('leadTime','Lead time',l.lead_time,'maxlength="200" placeholder="Lead time"')}</small></td><td><form id="${formId}" class="supplier-row-actions"><button class="quiet" type="submit">Save</button><button class="quiet" type="button" data-cancel-line>Cancel</button><span class="small error" role="status"></span></form></td>`;
+  const form=row.querySelector('form'),status=form.querySelector('[role=status]');
+  row.querySelector('[data-cancel-line]').onclick=()=>restore(row,l);
+  row.oninput=()=>{const price=form.elements.packPrice.value,units=form.elements.unitsPerPack.value;row.querySelector('[data-unit-cost]').textContent=price!==''&&Number(price)>=0&&Number(units)>0?money(Number(price)/Number(units)):'—';};
+  form.elements.productId.onchange=()=>{form.elements.matchType.value=form.elements.productId.value?'alternative':'unmatched';};
+  form.onsubmit=async e=>{e.preventDefault();if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form));data.productId=data.productId?Number(data.productId):null;data.unitsPerPack=Number(data.unitsPerPack);data.quotedPacks=Number(data.quotedPacks);if((data.productId===null)!==(data.matchType==='unmatched')){status.textContent='Choose a catalogue product and match type, or leave unmatched.';return;}
+   const controls=[...row.querySelectorAll('input,select,button')];controls.forEach(i=>i.disabled=true);status.textContent='Saving…';
+   try{await api('/api/admin/supply/quotes/'+quoteId+'/lines/'+l.id,{method:'PUT',headers:{'Content-Type':'application/json',[session.csrfHeader]:session.csrfToken},body:JSON.stringify(data)});
+    const product=products.find(p=>Number(p.id)===data.productId);Object.assign(l,{supplier_sku:data.sku,description:data.description,product_id:data.productId,product_name:product?.name||null,match_type:data.matchType,pack_label:data.packLabel,units_per_pack:data.unitsPerPack,pack_price_ex_vat:data.packPrice,quoted_packs:data.quotedPacks,availability:data.availability,lead_time:data.leadTime});
+    if(row.isConnected)restore(row,l);
+    // Keep the supplier's cached catalogue consistent without replacing the visible table.
+    if(typeof supplierCatalogue!=='undefined'){for(const item of supplierCatalogue)if(Number(item.id)===Number(l.id))Object.assign(item,l);}
+   }catch(error){status.textContent=error.message;controls.forEach(i=>i.disabled=false);}
+  };
+  form.elements.description.focus();
+ };}
+ target.querySelectorAll('[data-supplier-line]').forEach(row=>{const l=lines.find(l=>Number(l.id)===Number(row.dataset.supplierLine));if(l)bindRow(row,l);});
+}

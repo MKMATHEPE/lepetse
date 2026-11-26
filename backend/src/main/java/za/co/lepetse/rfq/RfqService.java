@@ -74,7 +74,7 @@ public class RfqService {
         if(request.items().isEmpty()&&files==0)throw bad("Add at least one item or attach a stationery list.");
         if(request.source().equals("document")&&files==0)throw bad("Attach your stationery list before submitting.");
         if(b.buyerType().equals("government")&&(text(b.reference()).isEmpty()||b.deadline()==null||text(b.channel()).isEmpty()))throw bad("Complete the government RFQ reference, closing deadline and official submission instructions.");
-        if(b.buyerType().equals("government")&&b.purchaseType().equals("scheduled_repeat"))throw bad("Scheduled repeat requests are available for businesses only.");
+        if(!b.buyerType().equals("business")&&b.purchaseType().equals("scheduled_repeat"))throw bad("Scheduled repeat requests are available for businesses only.");
         if(b.purchaseType().equals("scheduled_repeat")){
             if(!List.of("Weekly","Monthly","Custom").contains(text(b.scheduleFrequency()))||b.scheduleStart()==null||b.scheduleStart().isBefore(today)||!List.of("Until cancelled","On a date").contains(text(b.scheduleEndRule())))throw bad("Complete the requested repeat schedule with a current or future start date.");
             if(b.scheduleFrequency().equals("Custom")&&text(b.scheduleCustom()).isEmpty())throw bad("Describe the custom repeat interval.");
