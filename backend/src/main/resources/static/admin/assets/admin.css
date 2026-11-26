@@ -4,3 +4,17 @@
 @media(prefers-reduced-motion:no-preference){.selected-row{transition:background .12s ease}}
 
 .admin-list-pagination{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0}.admin-list-pagination>div{display:flex;gap:3px}.admin-list-pagination button{padding:6px 8px;min-width:30px;font-size:13px}.admin-list-pagination [aria-current="page"]{background:var(--navy);color:#fff;border-radius:4px}tr[hidden]{display:none!important}@media(max-width:550px){.admin-list-pagination{flex-direction:column;align-items:center}}
+
+.login-card .login-brand {
+  width: fit-content;
+  max-width: 100%;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.login-brand img {
+  display: block;
+  width: min(210px, 100%);
+  height: auto;
+  margin: -8px 0;
+}
