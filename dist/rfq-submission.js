@@ -34,7 +34,7 @@ async function submitRfq(summary,files,source,button,error){
   const payload=rfqRequestPayload(summary,source);
   const signature=JSON.stringify([payload,files.map(f=>[f.name,f.size,f.lastModified])]);
   if(!rfqSubmissionKeys.has(signature))rfqSubmissionKeys.set(signature,crypto.randomUUID());
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000);
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),window.LEPETSE_CONFIG.apiBase?90000:45000);
   try{
     const body=new FormData();body.append('request',new Blob([JSON.stringify(payload)],{type:'application/json'}));files.forEach(f=>body.append('files',f,f.name));
     const response=await fetch(String(window.LEPETSE_CONFIG.apiBase||'').replace(/\/$/,'')+'/api/rfqs',{method:'POST',headers:{'Idempotency-Key':rfqSubmissionKeys.get(signature)},body,signal:controller.signal});

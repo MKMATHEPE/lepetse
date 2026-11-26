@@ -2,7 +2,7 @@
 (async function startLepetse(){
   const main=document.getElementById('main');
   async function loadData(){
-    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),window.LEPETSE_CONFIG.apiBase?90000:15000);
     try{
       const base=String(window.LEPETSE_CONFIG.apiBase||'').replace(/\/$/,'');
       const response=await fetch(base+'/api/site-data',{signal:controller.signal,headers:{Accept:'application/json'},cache:'no-store'});

@@ -1,59 +1,39 @@
-# Review the plans and estimated monthly bill in Render before applying.
-# Automatic deploys are off: publishing remains an explicit action.
 services:
   - type: web
     name: lepetse
     runtime: docker
-    plan: standard
+    plan: free
     region: frankfurt
     dockerfilePath: ./Dockerfile
     dockerContext: .
     autoDeployTrigger: off
     healthCheckPath: /actuator/health
-    disk:
-      name: private-rfq-files
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
-      - key: DB_HOST
-        fromDatabase:
-          name: lepetse-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: lepetse-db
-          property: port
-      - key: DB_NAME
-        fromDatabase:
-          name: lepetse-db
-          property: database
+      - key: DB_URL
+        sync: false
       - key: DB_USERNAME
-        fromDatabase:
-          name: lepetse-db
-          property: user
+        sync: false
       - key: DB_PASSWORD
-        fromDatabase:
-          name: lepetse-db
-          property: password
-      - key: SERVER_ADDRESS
-        value: 0.0.0.0
-      - key: SESSION_COOKIE_SECURE
-        value: 'true'
+        sync: false
       - key: SERVER_FORWARD_HEADERS_STRATEGY
         value: native
-      - key: RFQ_STORAGE_DIRECTORY
-        value: /var/data/rfq-files
+      - key: STOREFRONT_ORIGINS
+        sync: false
+      - key: RFQ_STORAGE_MODE
+        value: r2
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_BUCKET
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
       - key: ADMIN_BOOTSTRAP_USERNAME
         sync: false
       - key: ADMIN_BOOTSTRAP_PASSWORD_HASH
         sync: false
-
-databases:
-  - name: lepetse-db
-    databaseName: lepetse
-    user: lepetse
-    plan: basic-256mb
-    region: frankfurt
-    postgresMajorVersion: '17'
-    diskSizeGB: 1
-    ipAllowList: []
+      - key: SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE
+        value: '4'
+      - key: SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE
+        value: '0'

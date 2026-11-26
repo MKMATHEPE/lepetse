@@ -2,6 +2,11 @@ package za.co.lepetse.admin;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.net.URI;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.concurrent.ConcurrentHashMap;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -18,10 +23,35 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Configuration
 public class AdminSecurity {
     @Bean PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder(12);}
-    @Bean SecurityFilterChain security(HttpSecurity http) throws Exception {
+    @Bean UrlBasedCorsConfigurationSource storefrontCors(@Value("${STOREFRONT_ORIGINS:}") String origins) {
+        var source = new UrlBasedCorsConfigurationSource();
+        if (origins.isBlank()) return source;
+        var allowed = java.util.Arrays.stream(origins.split(",")).map(String::trim).toList();
+        for (String origin : allowed) {
+            URI uri = URI.create(origin);
+            if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null
+                    || !origin.equals("https://" + uri.getRawAuthority())) {
+                throw new IllegalArgumentException("STOREFRONT_ORIGINS must contain exact HTTPS origins.");
+            }
+        }
+        var catalogue = new CorsConfiguration();
+        catalogue.setAllowedOrigins(allowed);
+        catalogue.setAllowedMethods(List.of("GET"));
+        source.registerCorsConfiguration("/api/site-data", catalogue);
+
+        var intake = new CorsConfiguration();
+        intake.setAllowedOrigins(allowed);
+        intake.setAllowedMethods(List.of("POST"));
+        intake.setAllowedHeaders(List.of("Content-Type", "Idempotency-Key"));
+        source.registerCorsConfiguration("/api/rfqs", intake);
+        return source;
+    }
+
+    @Bean SecurityFilterChain security(HttpSecurity http, UrlBasedCorsConfigurationSource storefrontCors) throws Exception {
         var throttle=new LoginThrottle();
         var redirect=new LoginUrlAuthenticationEntryPoint("/admin/login.html");
         return http
+            .cors(c -> c.configurationSource(storefrontCors))
             .authorizeHttpRequests(a->a
                 .requestMatchers(HttpMethod.GET,"/admin/login.html","/admin/assets/**","/api/admin/session").permitAll()
                 .requestMatchers("/admin/login","/admin/logout").permitAll()
