@@ -55,15 +55,3 @@ function bindDocumentRfqSubmission(summary){
   document.querySelector('.enquiry-actions>div:first-child p').textContent='Review your details before submitting. Submission stores this request and its documents with Lepetse. Email confirmations are not enabled.';
   button.onclick=()=>submitRfq(summary,uploadFiles,'document',button,error);
 }
-
-function bindCatalogueRfqJourney(){
- const route=location.hash.slice(1).split('?')[0];
- if(!quotationMode()||!(route==='stationery'||route.startsWith('product-')))return;
- if(!document.getElementById('catalogue-rfq-journey'))main.insertAdjacentHTML('afterbegin',`<div id="catalogue-rfq-journey" class="wrap catalogue-rfq-journey"><div><strong>Build your RFQ</strong><span id="catalogue-rfq-count" aria-live="polite"></span></div><a class="btn dark" id="catalogue-rfq-review" href="${rfqHref('basket')}">Review RFQ</a></div>`);
- updateCatalogueRfqJourney();
-}
-function updateCatalogueRfqJourney(){
- const count=document.getElementById('catalogue-rfq-count');if(!count)return;
- count.textContent=items.length?items.length+' item line'+(items.length===1?'':'s')+' selected':'Choose products and quantities below';
- document.getElementById('catalogue-rfq-review').hidden=!items.length;
-}
