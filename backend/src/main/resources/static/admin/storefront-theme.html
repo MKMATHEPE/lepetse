@@ -6,7 +6,7 @@
   <title>Storefront settings | Lepetse</title>
   <link rel="stylesheet" href="/admin/assets/admin.css?v=10">
   <link rel="stylesheet" href="/admin/assets/form-fields.css">
-  <link rel="stylesheet" href="/admin/assets/storefront-theme.css?v=4">
+  <link rel="stylesheet" href="/admin/assets/storefront-theme.css?v=11">
 <link rel="stylesheet" href="/admin/assets/dashboard-theme.css?v=2"><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"></head>
 <body>
   <header class="topbar">
@@ -23,10 +23,15 @@
       <a class="nav-active" aria-current="page" href="/admin/storefront-theme.html">Storefront settings</a>
     </aside>
     <main id="workspace" class="theme-workspace">
+      <div class="view-tabs" role="tablist" aria-label="Storefront settings sections">
+        <button type="button" role="tab" id="appearance-tab" aria-controls="appearance-panel" aria-selected="true">Appearance</button>
+        <button type="button" role="tab" id="featured-tab" aria-controls="featured-panel" aria-selected="false" tabindex="-1">Featured products</button>
+        <button type="button" role="tab" id="sales-tab" aria-controls="sales-panel" aria-selected="false" tabindex="-1">Sales</button>
+      </div>
       <div class="workspace-heading"><h1>Storefront settings</h1></div>
       <form id="storefront-theme">
         <fieldset id="theme-options" class="theme-options" disabled>
-          <legend>Website and admin appearance</legend>
+          <div id="appearance-panel" role="tabpanel" aria-labelledby="appearance-tab">
           <div class="theme-choices">
             <label class="theme-choice">
               <span class="theme-sample classic" aria-hidden="true"><span></span></span>
@@ -37,10 +42,22 @@
               <span class="theme-choice-label"><input type="radio" name="theme" value="charcoal" required> Charcoal &amp; gold <span class="theme-active" data-applied="charcoal" hidden>Applied</span></span>
             </label>
           </div>
-          <div class="storefront-display">
-            <label><input type="checkbox" name="rotateCatalogueBanner"> Rotate featured products automatically</label>
-            <label><input type="checkbox" name="showFooterWhatsApp"> Show WhatsApp link in the footer</label>
           </div>
+          <section id="featured-panel" role="tabpanel" aria-labelledby="featured-tab" hidden>
+          <div class="storefront-display">
+            <div class="featured-heading">
+              <h2 id="featured-heading">Featured products</h2>
+              <button class="quiet" id="add-featured" type="button" aria-expanded="false" aria-controls="featured-picker">Add product</button>
+            </div>
+            <div id="featured-picker" hidden>
+              <label for="featured-search">Search by name, brand, or product code</label>
+              <input type="search" id="featured-search" autocomplete="off">
+              <ul id="featured-results"></ul>
+            </div>
+            <ol id="featured-products"></ol>
+            <p id="featured-empty" class="muted" hidden>The catalogue will open without a featured product banner.</p>
+          </div>
+          </section>
         </fieldset>
         <div class="theme-actions">
           <button class="primary" type="submit" disabled>Apply settings</button>
@@ -50,8 +67,41 @@
           <p id="theme-status" role="status">Loading settings…</p>
         </div>
       </form>
+      <section id="sales-panel" class="sale-settings" role="tabpanel" aria-labelledby="sales-tab" hidden>
+        <div class="featured-heading">
+          <h2 id="sale-heading">Sales</h2>
+          <button id="new-sale" class="quiet" type="button" aria-controls="sale-form" aria-expanded="false" disabled>Schedule sale</button>
+        </div>
+        <div id="new-sale-editor">
+        <form id="sale-form" hidden>
+          <fieldset disabled>
+            <label for="sale-search">Search priced products</label>
+            <input id="sale-search" type="search" autocomplete="off">
+            <label for="sale-product">Product</label>
+            <select id="sale-product" required></select>
+            <p id="regular-price" class="muted" aria-live="polite"></p>
+            <div class="sale-fields">
+              <label>Sale price (R)<input name="price" type="number" min="0.01" step="0.01" required></label>
+              <label>Starts (SAST)<input name="startsAt" type="datetime-local" required></label>
+              <label>Ends (SAST)<input name="endsAt" type="datetime-local" required></label>
+            </div>
+            <div class="sale-form-actions">
+              <button class="quiet" id="close-sale-form" type="button">Close</button>
+              <button class="primary" type="submit">Schedule sale</button>
+            </div>
+          </fieldset>
+        </form>
+        </div>
+        <p id="sale-status" role="status"></p>
+        <p id="no-sales" class="muted" hidden>No active or scheduled sales.</p>
+        <table id="sales-table" aria-labelledby="sale-heading" hidden>
+          <thead><tr><th scope="col">Product</th><th scope="col">Sale price</th><th scope="col">Starts (SAST)</th><th scope="col">Ends (SAST)</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+          <tbody id="sale-list"></tbody>
+        </table>
+      </section>
     </main>
   </div>
-  <script src="/admin/assets/storefront-theme.js?v=5" defer></script>
+  <script src="/admin/assets/storefront-theme.js?v=9" defer></script>
+  <script src="/admin/assets/storefront-sales.js?v=2" defer></script>
 </body>
 </html>

@@ -7,8 +7,9 @@
   margin-bottom: 18px;
 }
 
-#storefront-theme {
-  max-width: 570px;
+#storefront-theme,
+.sale-settings {
+  max-width: 760px;
 }
 
 .theme-options {
@@ -134,4 +135,187 @@
 .storefront-display input {
   margin: 0;
   accent-color: #8b692a;
+}
+
+.featured-heading,
+.featured-row,
+.featured-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.featured-heading,
+.featured-row {
+  justify-content: space-between;
+}
+
+#featured-products,
+#featured-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featured-row {
+  padding-block: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.featured-row img {
+  object-fit: contain;
+  flex: none;
+}
+
+.featured-row > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.featured-row small {
+  display: block;
+  color: var(--muted);
+}
+
+.featured-controls {
+  flex: none;
+  gap: 0;
+}
+
+#featured-picker input {
+  width: 100%;
+}
+
+#featured-results button {
+  text-align: left;
+}
+
+@media (max-width: 470px) {
+  .featured-controls button {
+    padding-inline: 5px;
+  }
+}
+
+.sale-settings {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+#sale-form fieldset {
+  display: grid;
+  gap: 8px;
+  border: 0;
+  margin: 12px 0;
+  padding: 0;
+}
+
+.sale-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 155px), 1fr));
+  gap: 10px;
+}
+
+.sale-fields input {
+  display: block;
+  width: 100%;
+}
+
+.sale-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#sales-table th,
+#sales-table td {
+  padding: 9px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+#sales-table :is(th, td):first-child { padding-left: 0; }
+#sales-table :is(th, td):last-child { padding-right: 0; }
+
+#sales-table th,
+#sale-list small {
+  color: var(--muted);
+}
+
+#sale-list small {
+  display: block;
+}
+
+#sale-status:empty {
+  display: none;
+}
+
+#no-sales,
+#sale-status {
+  margin-top: 10px;
+}
+
+.sale-mobile-label {
+  display: none;
+}
+
+.sale-row-actions {
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  #sales-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  #sale-list tr {
+    display: block;
+    padding-block: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #sale-list td {
+    display: block;
+    padding: 3px 0;
+    border: 0;
+  }
+
+  .sale-mobile-label {
+    display: inline-block;
+    min-width: 104px;
+    color: var(--muted);
+  }
+}
+
+.theme-workspace > .view-tabs {
+  position: sticky;
+  top: -28px;
+  z-index: 4;
+  background: var(--background, #fff);
+  margin: -28px calc(-1 * clamp(18px, 3vw, 38px)) 30px;
+  padding-inline: clamp(18px, 3vw, 32px);
+  min-height: 45px;
+}
+
+.theme-workspace > .view-tabs button {
+  min-height: 44px;
+}
+
+.theme-workspace .storefront-display,
+.theme-workspace .sale-settings {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }

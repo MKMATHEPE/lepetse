@@ -69,14 +69,15 @@ public class SiteDataController {
             (Boolean.TRUE.equals(row.get("active"))?active:retired).add(p);
         }
         var prices=new LinkedHashMap<String,Object>();
-        for (var row:jdbc.queryForList("select p.legacy_id,r.* from product_price_reference r join product p on p.id=r.product_id where p.legacy_id is not null order by checked_on nulls first,r.id")) {
+        for (var row:jdbc.queryForList("select coalesce(p.legacy_id, 'db-' || p.id) as product_key,r.* from product_price_reference r join product p on p.id=r.product_id order by checked_on nulls first,r.id")) {
             var price=json(row.get("source_snapshot"));
             price.put("amountMinor",((BigDecimal)row.get("amount")).movePointRight(2).longValueExact());
             price.put("retailer",row.get("retailer")); price.put("sourceUrl",row.get("source_url"));
-            prices.put(row.get("legacy_id").toString(),price);
+            prices.put(row.get("product_key").toString(),price);
         }
         var display = StorefrontThemeController.read(jdbc);
         return Map.of("schemaVersion",1,"products",active,"retiredProducts",retired,"priceReferences",prices,"schools",schools(),"theme",display.theme(),
-            "rotateCatalogueBanner",display.rotateCatalogueBanner(),"showFooterWhatsApp",display.showFooterWhatsApp());
+            "rotateCatalogueBanner",display.rotateCatalogueBanner(),"showFooterWhatsApp",display.showFooterWhatsApp(),
+            "featuredProductIds",display.featuredProductIds(),"sales",StorefrontSaleController.sales(jdbc));
     }
 }

@@ -41,6 +41,7 @@
       retiredProducts.splice(0,retiredProducts.length,...data.retiredProducts);
       for(const key of Object.keys(priceReferences))delete priceReferences[key];
       Object.assign(priceReferences,data.priceReferences);
+      window.lepetseSales = new Map((data.sales || []).map(sale => [sale.productId, sale]));
       for(const key of Object.keys(schoolGradeLists))delete schoolGradeLists[key];
       Object.assign(schoolGradeLists,glenanda);
       for(const key of Object.keys(curroLists))delete curroLists[key];
@@ -55,8 +56,7 @@
       schoolDirectory.splice(0,schoolDirectory.length,...directory);
       shoppingCart=restoreShoppingCart();
       document.documentElement.dataset.storefrontTheme = data.theme === 'charcoal' ? 'charcoal' : 'classic';
-      document.documentElement.dataset.rotateCatalogueBanner = data.rotateCatalogueBanner !== false;
-      document.querySelector('.footer-whatsapp').hidden = data.showFooterWhatsApp === false;
+      window.lepetseFeaturedProductIds = data.featuredProductIds;
       document.documentElement.dataset.dataSource='postgresql';
     }finally{clearTimeout(timer)}
   }

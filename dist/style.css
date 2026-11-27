@@ -343,3 +343,21 @@ footer{padding-top:18px;padding-bottom:10px}.foot-grid{grid-template-columns:.85
     flex-basis: auto;
   }
 }
+
+.regular-sale-price {
+  font-size: .7em;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.card-price-line .sale-badge,
+.reference-price .sale-badge,
+.sale-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--gold);
+  color: #222;
+  font-size: 11px;
+  line-height: 1.4;
+}
